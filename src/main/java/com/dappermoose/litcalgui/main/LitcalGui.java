@@ -2,22 +2,14 @@ package com.dappermoose.litcalgui.main;
 
 /*
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowListener;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.sql.SQLException;
 import java.util.List;
-import javax.inject.Inject;
 import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -28,23 +20,38 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 */
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.Locale;
 
+import javax.inject.Inject;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
+import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Component;
+
 /**
  * Litcal Swing App.
  */
-public class LitcalGui implements Runnable
+@Component
+public class LitcalGui implements Runnable, InvocationHandler
 {
     private static final long serialVersionUID = 1L;
 
     private static Locale locale = Locale.getDefault ();
 
     private JFrame frame;
+
+    @Inject
+    private MessageSource msgSource;
 
     /**
      * LitcalGui constructor.
@@ -82,6 +89,44 @@ public class LitcalGui implements Runnable
         initGui ();
     }
 
+    /**
+     * method for InvocationHandler.
+     *
+     * @param proxy - the proxy object
+     * @param method - the Method object
+     * @param args - the arguments
+     *
+     * @return - an object;
+     *
+     * @throws Throwable - what this might throw
+     */
+    @Override
+    public Object invoke (final Object proxy, final Method method,
+                          final Object[] args)
+        throws Throwable
+    {
+        Object retVal = null;
+        if (method.getName ().equals ("windowClosing"))
+        {
+            shutdownApp ();
+        }
+        else if (method.getName ().equals ("actionPerformed"))
+        {
+            ActionEvent evt = (ActionEvent) args[0];
+            if (evt.getActionCommand ().equals (
+                          msgSource.getMessage ("exitLabel", null, locale)))
+            {
+                shutdownApp ();
+            }
+            else if (evt.getActionCommand ().equals (
+                         msgSource.getMessage ("aboutLabel", null, locale)))
+            {
+                showAbout ();
+            }
+        }
+        return retVal;
+    }
+
     private void initGui ()
     {
         try
@@ -106,6 +151,13 @@ public class LitcalGui implements Runnable
             ulafe.printStackTrace ();
         }
 
+        // create window handler
+        Object proxy = Proxy.newProxyInstance (
+                  this.getClass ().getClassLoader (),
+                       new Class<?>[] { ActionListener.class,
+                                        WindowListener.class },
+                       this);
+
         //Create and set up the window.
         /*
         frame = new JFrame (msgSource.getMessage (
@@ -113,10 +165,41 @@ public class LitcalGui implements Runnable
         */
         frame = new JFrame ("Litcal");
         frame.setDefaultCloseOperation (WindowConstants.DO_NOTHING_ON_CLOSE);
-        //frame.addWindowListener ((WindowListener) proxy);
+        frame.addWindowListener ((WindowListener) proxy);
 
         //Display the window.
         frame.pack ();
         frame.setVisible (true);
+    }
+
+    void shutdownApp ()
+    {
+        String [] options = new String []
+        {msgSource.getMessage ("yesLabel", null, locale),
+         msgSource.getMessage ("noLabel", null, locale)};
+
+        int choice = JOptionPane.showOptionDialog (frame,
+                msgSource.getMessage ("quitQuestion", null, locale),
+                msgSource.getMessage ("quitTitle", null, locale),
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, options, options[0]);
+
+        if (choice != JOptionPane.OK_OPTION)
+        {
+            return;
+        }
+
+        frame.setVisible (false);
+        frame.dispose ();
+
+        Runtime.getRuntime ().exit (0);
+    }
+
+    void showAbout ()
+    {
+        JOptionPane.showMessageDialog (frame,
+            msgSource.getMessage ("financeGui", null, locale));
+
     }
 }
