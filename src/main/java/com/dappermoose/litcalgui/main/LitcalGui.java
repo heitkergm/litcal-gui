@@ -3,7 +3,6 @@ package com.dappermoose.litcalgui.main;
 /*
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
-import java.sql.SQLException;
 import java.util.List;
 import javax.swing.Box;
 import javax.swing.JLabel;
@@ -159,11 +158,10 @@ public class LitcalGui implements Runnable, InvocationHandler
                        this);
 
         //Create and set up the window.
-        /*
         frame = new JFrame (msgSource.getMessage (
-                                             "financeLabel", null, locale));
-        */
-        frame = new JFrame ("Litcal");
+                                             "litcalLabel", null, locale));
+
+        // make sure that we ASK before closing the main frame
         frame.setDefaultCloseOperation (WindowConstants.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener ((WindowListener) proxy);
 
@@ -199,7 +197,7 @@ public class LitcalGui implements Runnable, InvocationHandler
     void showAbout ()
     {
         JOptionPane.showMessageDialog (frame,
-            msgSource.getMessage ("financeGui", null, locale));
+            msgSource.getMessage ("litcalGui", null, locale));
 
     }
 }
