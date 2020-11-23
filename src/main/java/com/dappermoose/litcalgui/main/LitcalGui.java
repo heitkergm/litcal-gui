@@ -229,7 +229,9 @@ public class LitcalGui implements Runnable, InvocationHandler
     void showAbout ()
     {
         JOptionPane.showMessageDialog (frame,
-            msgSource.getMessage ("litcalGui", null, locale));
+            msgSource.getMessage ("litcalGui", null, locale),
+            msgSource.getMessage ("aboutTitle", null, locale),
+            JOptionPane.INFORMATION_MESSAGE);
 
     }
 }
