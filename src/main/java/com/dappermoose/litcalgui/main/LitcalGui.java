@@ -1,15 +1,11 @@
 package com.dappermoose.litcalgui.main;
 
 /*
-import java.awt.BorderLayout;
-import java.awt.event.KeyEvent;
 import java.util.List;
-import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
@@ -19,8 +15,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 */
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowListener;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -28,8 +26,13 @@ import java.lang.reflect.Proxy;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.swing.Box;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
@@ -164,6 +167,35 @@ public class LitcalGui implements Runnable, InvocationHandler
         // make sure that we ASK before closing the main frame
         frame.setDefaultCloseOperation (WindowConstants.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener ((WindowListener) proxy);
+
+        // create Jpanel
+        JPanel panel = new JPanel (new BorderLayout ());
+
+        frame.getContentPane ().add (panel);
+
+        JMenuBar menuBar = new JMenuBar ();
+        JMenu fileMenu = new JMenu (
+                          msgSource.getMessage ("fileLabel", null, locale));
+        fileMenu.setMnemonic (KeyEvent.VK_F);
+        JMenuItem exitItem = new JMenuItem (
+                          msgSource.getMessage ("exitLabel", null, locale));
+        exitItem.setMnemonic (KeyEvent.VK_E);
+        exitItem.addActionListener ((ActionListener) proxy);
+        fileMenu.add (exitItem);
+        menuBar.add (fileMenu);
+
+        menuBar.add (Box.createHorizontalGlue ());
+
+        JMenu helpMenu = new JMenu (
+                          msgSource.getMessage ("helpLabel", null, locale));
+        helpMenu.setMnemonic (KeyEvent.VK_H);
+        JMenuItem aboutItem = new JMenuItem (
+                         msgSource.getMessage ("aboutLabel", null, locale));
+        aboutItem.setMnemonic (KeyEvent.VK_A);
+        aboutItem.addActionListener ((ActionListener) proxy);
+        helpMenu.add (aboutItem);
+        menuBar.add (helpMenu);
+        frame.setJMenuBar (menuBar);
 
         //Display the window.
         frame.pack ();
