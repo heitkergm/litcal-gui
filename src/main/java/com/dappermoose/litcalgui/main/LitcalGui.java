@@ -16,10 +16,14 @@ import javax.swing.event.ListSelectionListener;
 */
 
 import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -51,6 +55,8 @@ public class LitcalGui implements Runnable, InvocationHandler
     private static Locale locale = Locale.getDefault ();
 
     private JFrame frame;
+
+    private Font iconFont;
 
     @Inject
     private MessageSource msgSource;
@@ -159,6 +165,21 @@ public class LitcalGui implements Runnable, InvocationHandler
                        new Class<?>[] { ActionListener.class,
                                         WindowListener.class },
                        this);
+
+        try 
+        {
+            InputStream is = this.getClass ().getResourceAsStream ("/fa-solid-900.ttf");
+            iconFont = Font.createFont (Font.TRUETYPE_FONT, is);
+            iconFont = iconFont.deriveFont (Font.PLAIN, 24f);
+        }
+        catch (IOException ioe)
+        {
+            ioe.printStackTrace ();
+        }
+        catch (FontFormatException ffe)
+        {
+            ffe.printStackTrace ();
+        }
 
         //Create and set up the window.
         frame = new JFrame (msgSource.getMessage (
