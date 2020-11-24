@@ -1,21 +1,7 @@
 package com.dappermoose.litcalgui.main;
 
-/*
-import java.util.List;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-*/
-
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.event.ActionEvent;
@@ -32,11 +18,14 @@ import java.util.Locale;
 import javax.inject.Inject;
 import javax.swing.Box;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
@@ -44,48 +33,32 @@ import javax.swing.WindowConstants;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * Litcal Swing App.
  */
 @Component
+@Log4j2
 public class LitcalGui implements Runnable, InvocationHandler
 {
-    private static final long serialVersionUID = 1L;
-
-    private static Locale locale = Locale.getDefault ();
-
-    private JFrame frame;
 
     private Font iconFont;
 
     @Inject
+    private JFrame frame;
+    
+    @Inject
     private MessageSource msgSource;
 
+    @Inject
+    private Locale locale;
+    
     /**
      * LitcalGui constructor.
      */
     public LitcalGui ()
     {
-    }
-
-    /**
-     * get the current locale.
-     *
-     * @return the current locale
-     */
-    public static Locale getLocale ()
-    {
-        return locale;
-    }
-
-    /**
-     * set the locale.
-     *
-     * @param newLocale - the new locale
-     */
-    public static void setLocale (final Locale newLocale)
-    {
-        locale = newLocale;
     }
 
     /**
@@ -113,10 +86,12 @@ public class LitcalGui implements Runnable, InvocationHandler
                           final Object[] args)
         throws Throwable
     {
+        LOG.debug ("method name = " + method.getName ());
+
         Object retVal = null;
         if (method.getName ().equals ("windowClosing"))
         {
-            shutdownApp ();
+            shutdownApp (frame, locale);
         }
         else if (method.getName ().equals ("actionPerformed"))
         {
@@ -124,17 +99,18 @@ public class LitcalGui implements Runnable, InvocationHandler
             if (evt.getActionCommand ().equals (
                           msgSource.getMessage ("exitLabel", null, locale)))
             {
-                shutdownApp ();
+                shutdownApp (frame, locale);
             }
             else if (evt.getActionCommand ().equals (
                          msgSource.getMessage ("aboutLabel", null, locale)))
             {
-                showAbout ();
+                showAbout (frame, locale);
             }
         }
         return retVal;
     }
 
+    @SuppressWarnings ("CallToPrintStackTrace")
     private void initGui ()
     {
         try
@@ -142,23 +118,12 @@ public class LitcalGui implements Runnable, InvocationHandler
             UIManager.setLookAndFeel (
                 UIManager.getSystemLookAndFeelClassName ());
         }
-        catch (ClassNotFoundException cnfe)
+        catch (ClassNotFoundException | InstantiationException |
+               IllegalAccessException | UnsupportedLookAndFeelException ex)
         {
-            cnfe.printStackTrace ();
+            ex.printStackTrace ();
+            System.exit (1);
         }
-        catch (InstantiationException ie)
-        {
-            ie.printStackTrace ();
-        }
-        catch (IllegalAccessException iae)
-        {
-            iae.printStackTrace ();
-        }
-        catch (UnsupportedLookAndFeelException ulafe)
-        {
-            ulafe.printStackTrace ();
-        }
-
         // create window handler
         Object proxy = Proxy.newProxyInstance (
                   this.getClass ().getClassLoader (),
@@ -172,27 +137,32 @@ public class LitcalGui implements Runnable, InvocationHandler
             iconFont = Font.createFont (Font.TRUETYPE_FONT, is);
             iconFont = iconFont.deriveFont (Font.PLAIN, 24f);
         }
-        catch (IOException ioe)
+        catch (IOException | FontFormatException ex)
         {
-            ioe.printStackTrace ();
-        }
-        catch (FontFormatException ffe)
-        {
-            ffe.printStackTrace ();
+            ex.printStackTrace ();
+            System.exit (2);
         }
 
         //Create and set up the window.
-        frame = new JFrame (msgSource.getMessage (
-                                             "litcalLabel", null, locale));
-
+        frame.setTitle (msgSource.getMessage ("litcalLabel", null, locale));
+        
         // make sure that we ASK before closing the main frame
         frame.setDefaultCloseOperation (WindowConstants.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener ((WindowListener) proxy);
 
         // create Jpanel
         JPanel panel = new JPanel (new BorderLayout ());
+        panel.setPreferredSize (new Dimension (640, 480));
 
-        frame.getContentPane ().add (panel);
+        JScrollPane scrollPane = new JScrollPane (panel,
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        
+        JLabel label = new JLabel ("Hello", SwingConstants.CENTER);
+        
+        panel.add (label, BorderLayout.CENTER);
+        
+        frame.getContentPane ().add (scrollPane);
 
         JMenuBar menuBar = new JMenuBar ();
         JMenu fileMenu = new JMenu (
@@ -216,14 +186,19 @@ public class LitcalGui implements Runnable, InvocationHandler
         aboutItem.addActionListener ((ActionListener) proxy);
         helpMenu.add (aboutItem);
         menuBar.add (helpMenu);
+
         frame.setJMenuBar (menuBar);
+
+        JLabel label2 = new JLabel ("Hi!", SwingConstants.CENTER);
+        panel.add (label2, BorderLayout.SOUTH);
 
         //Display the window.
         frame.pack ();
         frame.setVisible (true);
+
     }
 
-    void shutdownApp ()
+    void shutdownApp (final JFrame frame, final Locale locale)
     {
         String [] options = new String []
         {msgSource.getMessage ("yesLabel", null, locale),
@@ -243,16 +218,14 @@ public class LitcalGui implements Runnable, InvocationHandler
 
         frame.setVisible (false);
         frame.dispose ();
-
-        Runtime.getRuntime ().exit (0);
+        System.exit (0);
     }
 
-    void showAbout ()
+    void showAbout (final JFrame frame, final Locale locale)
     {
         JOptionPane.showMessageDialog (frame,
             msgSource.getMessage ("litcalGui", null, locale),
             msgSource.getMessage ("aboutTitle", null, locale),
             JOptionPane.INFORMATION_MESSAGE);
-
     }
 }
