@@ -122,7 +122,7 @@ public class LitcalGui implements Runnable, InvocationHandler
                IllegalAccessException | UnsupportedLookAndFeelException ex)
         {
             ex.printStackTrace ();
-            System.exit (1);
+            frame.dispose ();
         }
         // create window handler
         Object proxy = Proxy.newProxyInstance (
@@ -140,7 +140,7 @@ public class LitcalGui implements Runnable, InvocationHandler
         catch (IOException | FontFormatException ex)
         {
             ex.printStackTrace ();
-            System.exit (2);
+            frame.dispose ();
         }
 
         //Create and set up the window.
@@ -218,7 +218,6 @@ public class LitcalGui implements Runnable, InvocationHandler
 
         frame.setVisible (false);
         frame.dispose ();
-        System.exit (0);
     }
 
     void showAbout (final JFrame frame, final Locale locale)
