@@ -1,4 +1,4 @@
-package com.dappermoose.litcalgui.main;
+package com.dappermoose.litcalgui.main.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -131,9 +131,9 @@ public class LitcalGui implements Runnable, InvocationHandler
                                         WindowListener.class },
                        this);
 
-        try 
+        
+        try (InputStream is = this.getClass ().getResourceAsStream ("/fa-solid-900.ttf"))
         {
-            InputStream is = this.getClass ().getResourceAsStream ("/fa-solid-900.ttf");
             iconFont = Font.createFont (Font.TRUETYPE_FONT, is);
             iconFont = iconFont.deriveFont (Font.PLAIN, 24f);
         }

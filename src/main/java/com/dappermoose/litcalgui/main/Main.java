@@ -5,6 +5,8 @@ import javax.swing.SwingUtilities;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.dappermoose.litcalgui.main.gui.LitcalGui;
+
 import lombok.extern.log4j.Log4j2;
 
 /**
