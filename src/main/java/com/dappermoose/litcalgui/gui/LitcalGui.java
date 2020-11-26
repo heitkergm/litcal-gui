@@ -1,4 +1,4 @@
-package com.dappermoose.litcalgui.main.gui;
+package com.dappermoose.litcalgui.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

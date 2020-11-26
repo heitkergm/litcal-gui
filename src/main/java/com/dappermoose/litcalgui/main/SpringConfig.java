@@ -13,7 +13,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 /**
  * The Class SpringConfig.
  */
-@ComponentScan ("com.dappermoose.litcalgui.main")
+@ComponentScan ("com.dappermoose.litcalgui")
 @Configuration
 public class SpringConfig
 {
