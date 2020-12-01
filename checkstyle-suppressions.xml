@@ -5,5 +5,5 @@
 
 <suppressions>
     <suppress checks="UncommentedMain" files="Main.java" lines="29" />
-    <suppress checks="SuppressWarnings" files="LitcalGui.java" lines="113" />
+    <suppress checks="SuppressWarnings" files="LitcalGui.java" lines="110" />
 </suppressions>

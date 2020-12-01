@@ -1,6 +1,5 @@
 package com.dappermoose.litcalgui.gui;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -18,14 +17,12 @@ import java.util.Locale;
 import javax.inject.Inject;
 import javax.swing.Box;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
+import javax.swing.JTextPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
@@ -150,17 +147,14 @@ public class LitcalGui implements Runnable, InvocationHandler
         frame.setDefaultCloseOperation (WindowConstants.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener ((WindowListener) proxy);
 
-        // create Jpanel
-        JPanel panel = new JPanel (new BorderLayout ());
-        panel.setPreferredSize (new Dimension (640, 480));
+        // create JTextPane
+        JTextPane textPane = new JTextPane ();
+        textPane.setPreferredSize (new Dimension (640, 480));
+        textPane.setEditable (false);
 
-        JScrollPane scrollPane = new JScrollPane (panel,
+        JScrollPane scrollPane = new JScrollPane (textPane,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        
-        JLabel label = new JLabel ("Hello", SwingConstants.CENTER);
-        
-        panel.add (label, BorderLayout.CENTER);
         
         frame.getContentPane ().add (scrollPane);
 
@@ -188,9 +182,6 @@ public class LitcalGui implements Runnable, InvocationHandler
         menuBar.add (helpMenu);
 
         frame.setJMenuBar (menuBar);
-
-        JLabel label2 = new JLabel ("Hi!", SwingConstants.CENTER);
-        panel.add (label2, BorderLayout.SOUTH);
 
         //Display the window.
         frame.pack ();
