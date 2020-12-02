@@ -12,10 +12,12 @@ import java.io.InputStream;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.net.URL;
 import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -157,6 +159,14 @@ public class LitcalGui implements Runnable, InvocationHandler
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         
         frame.getContentPane ().add (scrollPane);
+
+        URL imgURL = this.getClass ().getResource ("/favicon.png");
+        LOG.debug ("imgURL is " + (imgURL == null ? "not " : "") + "available");
+        if (imgURL != null)
+        {
+            ImageIcon icon = new ImageIcon (imgURL);
+            frame.setIconImage (icon.getImage ());
+        }
 
         JMenuBar menuBar = new JMenuBar ();
         JMenu fileMenu = new JMenu (
