@@ -153,6 +153,8 @@ public class LitcalGui implements Runnable, InvocationHandler
         JTextPane textPane = new JTextPane ();
         textPane.setPreferredSize (new Dimension (640, 480));
         textPane.setEditable (false);
+        textPane.setContentType ("text/html");
+        textPane.setText ("<html><head><<style type=\"text/css\"> body {font-family:sans-serif</style></head><body><p>Paragraph 1</p></body></html>");
 
         JScrollPane scrollPane = new JScrollPane (textPane,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
