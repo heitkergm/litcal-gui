@@ -95,6 +95,7 @@ public class LitcalGui implements Runnable, InvocationHandler
         else if (method.getName ().equals ("actionPerformed"))
         {
             ActionEvent evt = (ActionEvent) args[0];
+            LOG.debug ("        action command = " + evt.getActionCommand ());
             if (evt.getActionCommand ().equals (
                           msgSource.getMessage ("exitLabel", null, locale)))
             {
@@ -154,7 +155,7 @@ public class LitcalGui implements Runnable, InvocationHandler
         textPane.setPreferredSize (new Dimension (640, 480));
         textPane.setEditable (false);
         textPane.setContentType ("text/html");
-        textPane.setText ("<html><head><<style type=\"text/css\"> body {font-family:sans-serif</style></head><body><p>Paragraph 1</p></body></html>");
+        textPane.setText ("<html><head><<style type=\"text/css\"> body {font-family:sans-serif; font-size: large}</style></head><body><p>Paragraph 1</p></body></html>");
 
         JScrollPane scrollPane = new JScrollPane (textPane,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -192,6 +193,8 @@ public class LitcalGui implements Runnable, InvocationHandler
         aboutItem.addActionListener ((ActionListener) proxy);
         helpMenu.add (aboutItem);
         menuBar.add (helpMenu);
+        
+        JOptionPane.setDefaultLocale (locale);
 
         frame.setJMenuBar (menuBar);
 
