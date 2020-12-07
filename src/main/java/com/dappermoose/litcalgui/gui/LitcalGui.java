@@ -136,6 +136,11 @@ public class LitcalGui implements Runnable, InvocationHandler
         UIManager.put ("Button.foreground", Color.WHITE);
         UIManager.put ("Panel.background", Color.BLACK);
         UIManager.put ("Panel.foreground", Color.WHITE);
+        UIManager.put ("MenuItem.background", Color.BLACK);
+        UIManager.put ("MenuItem.foreground", Color.WHITE);
+        UIManager.put ("MenuBar.background", Color.BLACK);
+        UIManager.put ("MenuBar.foreground", Color.WHITE);
+        UIManager.put ("Menu.foreground", Color.WHITE);
         
         myLocale = (Locale) ctx.getBean ("locale");
         
@@ -247,9 +252,14 @@ public class LitcalGui implements Runnable, InvocationHandler
 
     void showAbout (final JFrame frame, final Locale locale)
     {
-        JOptionPane.showMessageDialog (frame,
-            msgSource.getMessage ("litcalGui", null, locale),
-            msgSource.getMessage ("aboutTitle", null, locale),
-            JOptionPane.INFORMATION_MESSAGE);
+        String [] options = new String []
+        {msgSource.getMessage ("okLabel", null, locale)};
+
+        JOptionPane.showOptionDialog (frame,
+                msgSource.getMessage ("litcalGui", null, locale),
+                msgSource.getMessage ("aboutTitle", null, locale),
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null, options, options[0]);
     }
 }
