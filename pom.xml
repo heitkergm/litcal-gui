@@ -40,7 +40,7 @@
         <spring-boot.version>2.4.0</spring-boot.version>
 
         <!-- plugins -->
-        <dependency-check-maven-plugin.version>6.0.3</dependency-check-maven-plugin.version>
+        <owasp-maven-plugin.version>6.0.3</owasp-maven-plugin.version>
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
         <git-commit-id-plugin.version>4.0.3</git-commit-id-plugin.version>
         <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
@@ -437,7 +437,7 @@
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>${dependency-check-maven-plugin.version}</version>
+                <version>${owasp-maven-plugin.version}</version>
                 <configuration>
                     <suppressionFiles>dependency-suppressions.xml</suppressionFiles>
                     <skipProvidedScope>true</skipProvidedScope>

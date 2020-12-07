@@ -1,7 +1,5 @@
 package com.dappermoose.litcalgui.main;
 
-import java.util.Locale;
-
 import javax.swing.JFrame;
 
 import org.springframework.context.MessageSource;
@@ -10,11 +8,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * The Class SpringConfig.
  */
 @ComponentScan ("com.dappermoose.litcalgui")
 @Configuration
+@Log4j2
 public class SpringConfig
 {
     /**
@@ -31,18 +32,7 @@ public class SpringConfig
         source.setBasenames ("classpath:messages");
         return source;
     }
-    
-    /**
-     * locale.
-     * 
-     * @return the locale
-     */
-    @Bean
-    Locale locale ()
-    {
-        return Locale.getDefault ();
-    }
-    
+        
     /**
      * frame.
      * 

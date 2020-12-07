@@ -1,5 +1,6 @@
 package com.dappermoose.litcalgui.gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -29,6 +30,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
@@ -45,13 +47,15 @@ public class LitcalGui implements Runnable, InvocationHandler
     private Font iconFont;
 
     @Inject
-    private JFrame frame;
+    JFrame frame;
     
     @Inject
-    private MessageSource msgSource;
-
+    MessageSource msgSource;
+    
     @Inject
-    private Locale locale;
+    ApplicationContext ctx;
+
+    private Locale myLocale = null;
     
     /**
      * LitcalGui constructor.
@@ -90,21 +94,21 @@ public class LitcalGui implements Runnable, InvocationHandler
         Object retVal = null;
         if (method.getName ().equals ("windowClosing"))
         {
-            shutdownApp (frame, locale);
+            shutdownApp (frame, myLocale);
         }
         else if (method.getName ().equals ("actionPerformed"))
         {
             ActionEvent evt = (ActionEvent) args[0];
             LOG.debug ("        action command = " + evt.getActionCommand ());
             if (evt.getActionCommand ().equals (
-                          msgSource.getMessage ("exitLabel", null, locale)))
+                          msgSource.getMessage ("exitLabel", null, myLocale)))
             {
-                shutdownApp (frame, locale);
+                shutdownApp (frame, myLocale);
             }
             else if (evt.getActionCommand ().equals (
-                         msgSource.getMessage ("aboutLabel", null, locale)))
+                         msgSource.getMessage ("aboutLabel", null, myLocale)))
             {
-                showAbout (frame, locale);
+                showAbout (frame, myLocale);
             }
         }
         return retVal;
@@ -124,6 +128,19 @@ public class LitcalGui implements Runnable, InvocationHandler
             ex.printStackTrace ();
             frame.dispose ();
         }
+        
+        UIManager.put ("OptionPane.background", Color.BLACK);
+        UIManager.put ("OptionPane.foreground", Color.WHITE);
+        UIManager.put ("OptionPane.messageForeground", Color.WHITE);
+        UIManager.put ("Button.background", Color.BLACK);
+        UIManager.put ("Button.foreground", Color.WHITE);
+        UIManager.put ("Panel.background", Color.BLACK);
+        UIManager.put ("Panel.foreground", Color.WHITE);
+        
+        myLocale = (Locale) ctx.getBean ("locale");
+        
+        LOG.debug ("in initGui, locale is " + myLocale);
+        
         // create window handler
         Object proxy = Proxy.newProxyInstance (
                   this.getClass ().getClassLoader (),
@@ -144,7 +161,7 @@ public class LitcalGui implements Runnable, InvocationHandler
         }
 
         //Create and set up the window.
-        frame.setTitle (msgSource.getMessage ("litcalLabel", null, locale));
+        frame.setTitle (msgSource.getMessage ("litcalLabel", null, myLocale));
         
         // make sure that we ASK before closing the main frame
         frame.setDefaultCloseOperation (WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -155,7 +172,9 @@ public class LitcalGui implements Runnable, InvocationHandler
         textPane.setPreferredSize (new Dimension (640, 480));
         textPane.setEditable (false);
         textPane.setContentType ("text/html");
-        textPane.setText ("<html><head><<style type=\"text/css\"> body {font-family:sans-serif; font-size: large}</style></head><body><p>Paragraph 1</p></body></html>");
+        textPane.setText ("<html><head><<style type=\"text/css\">" +
+                "body {font-family:sans-serif; font-size: large; background-color: black; color: white}" +
+                "</style></head><body><p>Paragraph 1</p></body></html>");
 
         JScrollPane scrollPane = new JScrollPane (textPane,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -173,10 +192,10 @@ public class LitcalGui implements Runnable, InvocationHandler
 
         JMenuBar menuBar = new JMenuBar ();
         JMenu fileMenu = new JMenu (
-                          msgSource.getMessage ("fileLabel", null, locale));
+                          msgSource.getMessage ("fileLabel", null, myLocale));
         fileMenu.setMnemonic (KeyEvent.VK_F);
         JMenuItem exitItem = new JMenuItem (
-                          msgSource.getMessage ("exitLabel", null, locale));
+                          msgSource.getMessage ("exitLabel", null, myLocale));
         exitItem.setMnemonic (KeyEvent.VK_E);
         exitItem.addActionListener ((ActionListener) proxy);
         fileMenu.add (exitItem);
@@ -185,16 +204,16 @@ public class LitcalGui implements Runnable, InvocationHandler
         menuBar.add (Box.createHorizontalGlue ());
 
         JMenu helpMenu = new JMenu (
-                          msgSource.getMessage ("helpLabel", null, locale));
+                          msgSource.getMessage ("helpLabel", null, myLocale));
         helpMenu.setMnemonic (KeyEvent.VK_H);
         JMenuItem aboutItem = new JMenuItem (
-                         msgSource.getMessage ("aboutLabel", null, locale));
+                         msgSource.getMessage ("aboutLabel", null, myLocale));
         aboutItem.setMnemonic (KeyEvent.VK_A);
         aboutItem.addActionListener ((ActionListener) proxy);
         helpMenu.add (aboutItem);
         menuBar.add (helpMenu);
         
-        JOptionPane.setDefaultLocale (locale);
+        JOptionPane.setDefaultLocale (myLocale);
 
         frame.setJMenuBar (menuBar);
 
