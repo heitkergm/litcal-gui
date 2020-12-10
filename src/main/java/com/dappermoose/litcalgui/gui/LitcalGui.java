@@ -1,10 +1,15 @@
 package com.dappermoose.litcalgui.gui;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowListener;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationHandler;
@@ -13,7 +18,9 @@ import java.lang.reflect.Proxy;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import org.springframework.context.ApplicationContext;
@@ -100,7 +107,6 @@ public class LitcalGui implements Runnable, InvocationHandler
         return retVal;
     }
 
-    @SuppressWarnings ("CallToPrintStackTrace")
     private void initGui ()
     {        
         myLocale = (Locale) ctx.getBean ("locale");
@@ -121,7 +127,7 @@ public class LitcalGui implements Runnable, InvocationHandler
         }
         catch (IOException | FontFormatException ex)
         {
-            ex.printStackTrace ();
+            LOG.fatal ("Font error", ex);
             frame.dispose ();
         }
         
@@ -138,12 +144,15 @@ public class LitcalGui implements Runnable, InvocationHandler
         {msgSource.getMessage ("yesLabel", null, locale),
          msgSource.getMessage ("noLabel", null, locale)};
 
+        // font-awesome question mark
+        ImageIcon icon = makeIcon ('\uf128');
+        
         int choice = JOptionPane.showOptionDialog (frame,
                 msgSource.getMessage ("quitQuestion", null, locale),
                 msgSource.getMessage ("quitTitle", null, locale),
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
-                null, options, options[0]);
+                icon, options, options[0]);
 
         if (choice != JOptionPane.OK_OPTION)
         {
@@ -159,11 +168,37 @@ public class LitcalGui implements Runnable, InvocationHandler
         String [] options = new String []
         {msgSource.getMessage ("okLabel", null, locale)};
 
+        // font-awesome exclamation
+        ImageIcon icon = makeIcon ('\uf12a');
+        
         JOptionPane.showOptionDialog (frame,
                 msgSource.getMessage ("litcalGui", null, locale),
                 msgSource.getMessage ("aboutTitle", null, locale),
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.INFORMATION_MESSAGE,
-                null, options, options[0]);
+                icon, options, options[0]);
+    }
+    
+    private ImageIcon makeIcon (final char text)
+    {
+        JLabel label = new JLabel (Character.toString (text));
+        label.setForeground (Color.WHITE);
+        label.setFont (iconFont);
+        Dimension dim = label.getPreferredSize ();
+        int width = dim.width + 1;
+        int height = dim.height + 1;
+        label.setSize (width, height);
+        BufferedImage bufImage =
+                new BufferedImage (width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = bufImage.createGraphics ();
+        g2d.setRenderingHint (
+                RenderingHints.KEY_TEXT_ANTIALIASING,
+                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        g2d.setRenderingHint (
+                RenderingHints.KEY_FRACTIONALMETRICS,
+                RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+        label.print (g2d);
+        g2d.dispose ();
+        return new ImageIcon (bufImage);
     }
 }

@@ -38,7 +38,6 @@ public final class FrameSetup
     {
     }
     
-    @SuppressWarnings ("CallToPrintStackTrace")
     protected static void setupFrame (final JFrame frame, final Locale myLocale,
                                   final MessageSource msgSource, final Object proxy)
     {
@@ -50,7 +49,7 @@ public final class FrameSetup
         catch (ClassNotFoundException | InstantiationException |
                IllegalAccessException | UnsupportedLookAndFeelException ex)
         {
-            ex.printStackTrace ();
+            LOG.fatal ("UIManager look and feel error", ex);
             frame.dispose ();
         }
         
