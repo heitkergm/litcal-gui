@@ -37,7 +37,7 @@
         <pmd.version>6.29.0</pmd.version>
         <slf4j.version>2.0.0-alpha1</slf4j.version>
         <spotbugs.version>4.2.0</spotbugs.version>
-        <spring-boot.version>2.4.0</spring-boot.version>
+        <spring-boot.version>2.4.1</spring-boot.version>
 
         <!-- plugins -->
         <owasp-maven-plugin.version>6.0.3</owasp-maven-plugin.version>
