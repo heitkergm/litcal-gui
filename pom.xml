@@ -42,7 +42,6 @@
         <!-- plugins -->
         <owasp-maven-plugin.version>6.0.3</owasp-maven-plugin.version>
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
-        <git-commit-id-plugin.version>4.0.3</git-commit-id-plugin.version>
         <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
         <lombok-maven-plugin.version>1.18.16.0</lombok-maven-plugin.version>
         <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
@@ -431,14 +430,6 @@
                         <version>${pmd.version}</version>
                     </dependency>
                 </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
-                <version>${git-commit-id-plugin.version}</version>
-                <configuration>
-                    <useNativeGit>true</useNativeGit>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.owasp</groupId>
