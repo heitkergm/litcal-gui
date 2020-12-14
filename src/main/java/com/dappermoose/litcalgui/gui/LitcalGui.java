@@ -120,7 +120,8 @@ public class LitcalGui implements Runnable, InvocationHandler
                                         WindowListener.class },
                        this);
         
-        try (InputStream is = this.getClass ().getResourceAsStream ("/fa-solid-900.ttf"))
+        try (InputStream is = this.getClass ().
+             getResourceAsStream (msgSource.getMessage ("fa", null, myLocale)))
         {
             iconFont = Font.createFont (Font.TRUETYPE_FONT, is);
             iconFont = iconFont.deriveFont (Font.PLAIN, 24f);

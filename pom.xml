@@ -27,6 +27,7 @@
         <checkstyle.file.config>checkstyle.xml</checkstyle.file.config>
         <checkstyle.file.suppress>checkstyle-suppressions.xml</checkstyle.file.suppress>
         <checkstyle.version>8.38</checkstyle.version>
+        <font-awesome.version>5.15.1</font-awesome.version>
         <inject.version>1</inject.version>
         <junit-jupiter.version>5.7.0</junit-jupiter.version>
         <log4j2.version>2.14.0</log4j2.version>
@@ -40,7 +41,6 @@
         <spring-boot.version>2.4.1</spring-boot.version>
 
         <!-- plugins -->
-        <owasp-maven-plugin.version>6.0.3</owasp-maven-plugin.version>
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
         <lombok-maven-plugin.version>1.18.16.0</lombok-maven-plugin.version>
@@ -59,6 +59,7 @@
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
         <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <owasp-maven-plugin.version>6.0.3</owasp-maven-plugin.version>
         <spotbugs-maven-plugin.version>4.1.4</spotbugs-maven-plugin.version>
         <takari-maven-plugin.version>0.7.7</takari-maven-plugin.version>
         <versions-maven-plugin.version>2.8.1</versions-maven-plugin.version>
@@ -91,6 +92,11 @@
             <artifactId>junit-jupiter</artifactId>
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>${font-awesome.version}</version>
         </dependency>
     </dependencies>
 
@@ -265,12 +271,30 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/MANIFEST.MF</exclude>
+                                        <exclude>META-INF/DEPENDENCIES</exclude>
+                                        <exclude>META-INF/spring.tooling</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
                             <transformers>
+                                <!-- set main class -->
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>com.dappermoose.litcalgui.main.Main</mainClass>
                                 </transformer>
+
+                                <!-- handle Apache licenses and notices -->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer" />
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheNoticeResourceTransformer" />
+
                                 <!-- transformer merges Log4j2 plugin cache files -->
                                 <transformer implementation="com.github.edwgiz.maven_shade_plugin.log4j2_cache_transformer.PluginsCacheFileTransformer" />
+
+                                <!-- the rest are from spring-boot-starter-parent -->
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                                     <resource>META-INF/spring.schemas</resource>
