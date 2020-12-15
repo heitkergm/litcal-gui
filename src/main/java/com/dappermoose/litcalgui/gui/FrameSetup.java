@@ -78,9 +78,9 @@ public final class FrameSetup
         textPane.setPreferredSize (new Dimension (640, 480));
         textPane.setEditable (false);
         textPane.setContentType ("text/html");
-        textPane.setText ("<html><head><<style type=\"text/css\">" +
-                "body {font-family:sans-serif; font-size: large; background-color: black; color: white}" +
-                "</style></head><body><p>Paragraph 1</p></body></html>");
+        textPane.setText ("<html>\n<head>\n<style type=\"text/css\">\n" +
+                "body {font-family:sans-serif; font-size: large; background-color: black; color: white}\n" +
+                "</style>\n</head>\n<body>\nHello\n</body>\n</html>\n");
 
         JScrollPane scrollPane = new JScrollPane (textPane,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
