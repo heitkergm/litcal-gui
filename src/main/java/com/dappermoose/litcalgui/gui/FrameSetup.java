@@ -2,9 +2,11 @@ package com.dappermoose.litcalgui.gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.net.URL;
 import java.util.Locale;
 
@@ -39,7 +41,7 @@ public final class FrameSetup
     }
     
     protected static void setupFrame (final JFrame frame, final Locale myLocale,
-                                  final MessageSource msgSource, final Object proxy)
+                                  final MessageSource msgSource, final LitcalGui lg)
     {
         try
         {
@@ -71,16 +73,25 @@ public final class FrameSetup
         
         // make sure that we ASK before closing the main frame
         frame.setDefaultCloseOperation (WindowConstants.DO_NOTHING_ON_CLOSE);
-        frame.addWindowListener ((WindowListener) proxy);
+        frame.addWindowListener (new WindowAdapter ()
+        {
+            @Override
+            public void windowClosing (final WindowEvent e)
+            {
+                LOG.debug ("Clicked on exit");
+                lg.shutdownApp (frame, myLocale);
+            }
+        });
 
         // create JTextPane
         JTextPane textPane = new JTextPane ();
         textPane.setPreferredSize (new Dimension (640, 480));
         textPane.setEditable (false);
         textPane.setContentType ("text/html");
-        textPane.setText ("<html>\n<head>\n<style type=\"text/css\">\n" +
-                "body {font-family:sans-serif; font-size: large; background-color: black; color: white}\n" +
-                "</style>\n</head>\n<body>\nHello\n</body>\n</html>\n");
+        textPane.setText ("<html>\n" + "<head>\n" + "<style type=\"text/css\">\n" +
+            "body {font-family:sans-serif; font-size: large; background-color: black; color: white}\n" +
+            "</style>\n" + "</head>\n" + "<body>\n" + "Hello\n" + "</body>\n" +
+            "</html>\n");
 
         JScrollPane scrollPane = new JScrollPane (textPane,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -103,7 +114,15 @@ public final class FrameSetup
         JMenuItem exitItem = new JMenuItem (
                           msgSource.getMessage ("exitLabel", null, myLocale));
         exitItem.setMnemonic (KeyEvent.VK_E);
-        exitItem.addActionListener ((ActionListener) proxy);
+        exitItem.addActionListener (new ActionListener ()
+        {
+            @Override
+            public void actionPerformed (final ActionEvent e)
+            {
+                LOG.debug ("Chose File->Exit");
+                lg.shutdownApp (frame, myLocale);
+            }
+        });
         fileMenu.add (exitItem);
         menuBar.add (fileMenu);
 
@@ -115,7 +134,15 @@ public final class FrameSetup
         JMenuItem aboutItem = new JMenuItem (
                          msgSource.getMessage ("aboutLabel", null, myLocale));
         aboutItem.setMnemonic (KeyEvent.VK_A);
-        aboutItem.addActionListener ((ActionListener) proxy);
+        aboutItem.addActionListener (new ActionListener ()
+        {
+            @Override
+            public void actionPerformed (final ActionEvent e)
+            {
+                LOG.debug ("Chose Help->About");
+                lg.showAbout (frame, myLocale);
+            }
+        });
         helpMenu.add (aboutItem);
         menuBar.add (helpMenu);
         

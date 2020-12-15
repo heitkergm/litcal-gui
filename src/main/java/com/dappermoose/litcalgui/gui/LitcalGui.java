@@ -6,15 +6,9 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -34,13 +28,12 @@ import lombok.extern.log4j.Log4j2;
  */
 @Component
 @Log4j2
-public class LitcalGui implements Runnable, InvocationHandler
+public class LitcalGui implements Runnable
 {
 
     private Font iconFont;
 
-    @Inject
-    JFrame frame;
+    private JFrame frame;
     
     @Inject
     MessageSource msgSource;
@@ -66,59 +59,13 @@ public class LitcalGui implements Runnable, InvocationHandler
         initGui ();
     }
 
-    /**
-     * method for InvocationHandler.
-     *
-     * @param proxy - the proxy object
-     * @param method - the Method object
-     * @param args - the arguments
-     *
-     * @return - an object;
-     *
-     * @throws Throwable - what this might throw
-     */
-    @Override
-    public Object invoke (final Object proxy, final Method method,
-                          final Object[] args)
-        throws Throwable
-    {
-        LOG.debug ("method name = " + method.getName ());
-
-        Object retVal = null;
-        if (method.getName ().equals ("windowClosing"))
-        {
-            shutdownApp (frame, myLocale);
-        }
-        else if (method.getName ().equals ("actionPerformed"))
-        {
-            ActionEvent evt = (ActionEvent) args[0];
-            LOG.debug ("        action command = " + evt.getActionCommand ());
-            if (evt.getActionCommand ().equals (
-                          msgSource.getMessage ("exitLabel", null, myLocale)))
-            {
-                shutdownApp (frame, myLocale);
-            }
-            else if (evt.getActionCommand ().equals (
-                         msgSource.getMessage ("aboutLabel", null, myLocale)))
-            {
-                showAbout (frame, myLocale);
-            }
-        }
-        return retVal;
-    }
-
     private void initGui ()
-    {        
+    {
+        frame = new JFrame ();
+
         myLocale = (Locale) ctx.getBean ("locale");
         
         LOG.debug ("in initGui, locale is " + myLocale);
-        
-        // create window handler
-        Object proxy = Proxy.newProxyInstance (
-                  this.getClass ().getClassLoader (),
-                       new Class<?>[] { ActionListener.class,
-                                        WindowListener.class },
-                       this);
         
         try (InputStream is = this.getClass ().
              getResourceAsStream (msgSource.getMessage ("fa", null, myLocale)))
@@ -132,7 +79,7 @@ public class LitcalGui implements Runnable, InvocationHandler
             frame.dispose ();
         }
         
-        FrameSetup.setupFrame (frame, myLocale, msgSource, proxy);
+        FrameSetup.setupFrame (frame, myLocale, msgSource, this);
         
         //Display the window.
         frame.pack ();
@@ -145,15 +92,13 @@ public class LitcalGui implements Runnable, InvocationHandler
         {msgSource.getMessage ("yesLabel", null, locale),
          msgSource.getMessage ("noLabel", null, locale)};
 
-        // font-awesome question mark
-        ImageIcon icon = makeIcon ('\uf128');
-        
+        // icon is font-awesome question mark
         int choice = JOptionPane.showOptionDialog (frame,
                 msgSource.getMessage ("quitQuestion", null, locale),
                 msgSource.getMessage ("quitTitle", null, locale),
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
-                icon, options, options[0]);
+                makeIcon ('\uf128'), options, options[0]);
 
         if (choice != JOptionPane.OK_OPTION)
         {
@@ -169,15 +114,13 @@ public class LitcalGui implements Runnable, InvocationHandler
         String [] options = new String []
         {msgSource.getMessage ("okLabel", null, locale)};
 
-        // font-awesome exclamation
-        ImageIcon icon = makeIcon ('\uf12a');
-        
+        // icon is font-awesome exclamation        
         JOptionPane.showOptionDialog (frame,
                 msgSource.getMessage ("litcalGui", null, locale),
                 msgSource.getMessage ("aboutTitle", null, locale),
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.INFORMATION_MESSAGE,
-                icon, options, options[0]);
+                makeIcon ('\uf12a'), options, options[0]);
     }
     
     private ImageIcon makeIcon (final char text)

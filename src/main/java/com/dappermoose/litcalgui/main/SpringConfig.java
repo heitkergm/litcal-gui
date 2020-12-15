@@ -1,7 +1,5 @@
 package com.dappermoose.litcalgui.main;
 
-import javax.swing.JFrame;
-
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -31,16 +29,5 @@ public class SpringConfig
         source.setCacheSeconds (60);
         source.setBasenames ("classpath:messages");
         return source;
-    }
-        
-    /**
-     * frame.
-     * 
-     * @return the swing frame
-     */
-    @Bean
-    JFrame frame ()
-    {
-        return new JFrame ();
     }
 }
