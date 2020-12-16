@@ -107,6 +107,7 @@ public final class FrameSetup
             frame.setIconImage (icon.getImage ());
         }
 
+        // make menu bar
         JMenuBar menuBar = new JMenuBar ();
         JMenu fileMenu = new JMenu (
                           msgSource.getMessage ("fileLabel", null, myLocale));
@@ -126,8 +127,29 @@ public final class FrameSetup
         fileMenu.add (exitItem);
         menuBar.add (fileMenu);
 
+        // request year
+        JMenu calMenu = new JMenu (
+                          msgSource.getMessage ("calLabel", null, myLocale));
+        calMenu.setMnemonic (KeyEvent.VK_C);
+
+        JMenuItem makeItem = new JMenuItem (
+                         msgSource.getMessage ("makeLabel", null, myLocale));
+        makeItem.setMnemonic (KeyEvent.VK_M);
+        makeItem.addActionListener (new ActionListener ()
+        {
+            @Override
+            public void actionPerformed (final ActionEvent e)
+            {
+                LOG.debug ("Chose Calendar->Make");
+                lg.showAbout (frame, myLocale);
+            }
+        });
+        calMenu.add (makeItem);
+        menuBar.add (calMenu);
+
         menuBar.add (Box.createHorizontalGlue ());
 
+        // help and about
         JMenu helpMenu = new JMenu (
                           msgSource.getMessage ("helpLabel", null, myLocale));
         helpMenu.setMnemonic (KeyEvent.VK_H);
