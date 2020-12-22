@@ -4,7 +4,9 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.io.ClassPathResource;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -29,5 +31,16 @@ public class SpringConfig
         source.setCacheSeconds (60);
         source.setBasenames ("classpath:messages");
         return source;
+    }
+
+    @Bean
+    public PropertySourcesPlaceholderConfigurer placeholderConfigurer ()
+    {
+        PropertySourcesPlaceholderConfigurer propsConfig = 
+            new PropertySourcesPlaceholderConfigurer ();
+        propsConfig.setLocation (new ClassPathResource ("git.properties"));
+        propsConfig.setIgnoreResourceNotFound (true);
+        propsConfig.setIgnoreUnresolvablePlaceholders (true);
+        return propsConfig;
     }
 }

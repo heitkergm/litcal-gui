@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
@@ -36,11 +37,14 @@ public class LitcalGui implements Runnable
     private JFrame frame;
     
     @Inject
-    MessageSource msgSource;
+    private MessageSource msgSource;
     
     @Inject
-    ApplicationContext ctx;
-
+    private ApplicationContext ctx;
+    
+    @Value ("${git.build.version}")
+    private String gitVersion;
+    
     private Locale myLocale = null;
     
     /**
@@ -79,7 +83,7 @@ public class LitcalGui implements Runnable
             frame.dispose ();
         }
         
-        FrameSetup.setupFrame (frame, myLocale, msgSource, this);
+        FrameSetup.setupFrame (frame, myLocale, msgSource, gitVersion, this);
         
         //Display the window.
         frame.pack ();
@@ -109,14 +113,14 @@ public class LitcalGui implements Runnable
         frame.dispose ();
     }
 
-    void showAbout (final JFrame frame, final Locale locale)
+    void showAbout (final JFrame frame, final Locale locale, final String version)
     {
         String [] options = new String []
         {msgSource.getMessage ("okLabel", null, locale)};
 
         // icon is font-awesome exclamation        
         JOptionPane.showOptionDialog (frame,
-                msgSource.getMessage ("litcalGui", null, locale),
+                msgSource.getMessage ("litcalGui", new Object [] {(Object) version}, locale),
                 msgSource.getMessage ("aboutTitle", null, locale),
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.INFORMATION_MESSAGE,

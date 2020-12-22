@@ -42,6 +42,7 @@
 
         <!-- plugins -->
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
+        <git-commit-id-plugin.version>3.0.1</git-commit-id-plugin.version>
         <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
         <lombok-maven-plugin.version>1.18.16.0</lombok-maven-plugin.version>
         <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
@@ -131,6 +132,25 @@
             </plugins>
         </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>${git-commit-id-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals><goal>revision</goal></goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <useNativeGit>true</useNativeGit>
+                    <verbose>true</verbose>
+                    <dateFormat>yyyy-MM-dd'T'HH:mm:ssZ</dateFormat>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>
+                        ${project.build.outputDirectory}/git.properties
+                    </generateGitPropertiesFilename>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
