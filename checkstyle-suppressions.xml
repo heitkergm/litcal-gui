@@ -6,5 +6,5 @@
 <suppressions>
     <suppress checks="UncommentedMain" files="Main.java" lines="31" />
     <suppress checks="AvoidEscapedUnicodeCharacters" files="LitcalGui"
-              lines="105,127" />
+              lines="109,134" />
 </suppressions>
