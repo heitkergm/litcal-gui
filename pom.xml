@@ -26,7 +26,7 @@
         <required-maven.version>3.6.3</required-maven.version>
         <checkstyle.file.config>checkstyle.xml</checkstyle.file.config>
         <checkstyle.file.suppress>checkstyle-suppressions.xml</checkstyle.file.suppress>
-        <checkstyle.version>8.38</checkstyle.version>
+        <checkstyle.version>8.39</checkstyle.version>
         <font-awesome.version>5.15.1</font-awesome.version>
         <inject.version>1</inject.version>
         <junit-jupiter.version>5.7.0</junit-jupiter.version>
