@@ -43,7 +43,9 @@ public final class FrameSetup
     protected static void setupFrame (final JFrame frame, final Locale myLocale,
                                   final MessageSource msgSource, 
                                   final String gitVersion, 
-                                  final String gitBuildTime, final LitcalGui lg)
+                                  final String gitCommitTime,
+                                  final String gitCommitId,
+                                  final LitcalGui lg)
     {
         try
         {
@@ -143,7 +145,8 @@ public final class FrameSetup
             public void actionPerformed (final ActionEvent e)
             {
                 LOG.debug ("Chose Calendar->Make");
-                lg.showAbout (frame, myLocale, gitBuildTime, gitVersion);
+                lg.showAbout (frame, myLocale, gitVersion, gitCommitTime,
+                              gitCommitId);
             }
         });
         calMenu.add (makeItem);
@@ -164,7 +167,8 @@ public final class FrameSetup
             public void actionPerformed (final ActionEvent e)
             {
                 LOG.debug ("Chose Help->About");
-                lg.showAbout (frame, myLocale, gitVersion, gitBuildTime);
+                lg.showAbout (frame, myLocale, gitVersion, gitCommitTime,
+                              gitCommitId);
             }
         });
         helpMenu.add (aboutItem);

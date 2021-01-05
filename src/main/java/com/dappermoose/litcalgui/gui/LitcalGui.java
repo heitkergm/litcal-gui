@@ -45,8 +45,11 @@ public class LitcalGui implements Runnable
     @Value ("${git.build.version}")
     private String gitVersion;
 
-    @Value ("${git.build.time}")
-    private String gitBuildTime;
+    @Value ("${git.commit.time}")
+    private String gitCommitTime;
+
+    @Value ("${git.commit.id.abbrev}")
+    private String gitCommitId;
     
     private Locale myLocale = null;
     
@@ -87,7 +90,7 @@ public class LitcalGui implements Runnable
         }
         
         FrameSetup.setupFrame (frame, myLocale, msgSource, gitVersion, 
-            gitBuildTime, this);
+            gitCommitTime, gitCommitId, this);
         
         //Display the window.
         frame.pack ();
@@ -118,7 +121,8 @@ public class LitcalGui implements Runnable
     }
 
     void showAbout (final JFrame frame, final Locale locale,
-                    final String version, final String buildTime)
+                    final String version, final String commitTime,
+                    final String commitId)
     {
         String [] options = new String []
         {msgSource.getMessage ("okLabel", null, locale)};
@@ -126,7 +130,9 @@ public class LitcalGui implements Runnable
         // icon is font-awesome exclamation        
         JOptionPane.showOptionDialog (frame,
                 msgSource.getMessage ("litcalGui",
-                    new Object [] {(Object) version, (Object) buildTime},
+                    new Object []
+                        {(Object) version, (Object) commitTime,
+                         (Object) commitId},
                     locale),
                 msgSource.getMessage ("aboutTitle", null, locale),
                 JOptionPane.DEFAULT_OPTION,
