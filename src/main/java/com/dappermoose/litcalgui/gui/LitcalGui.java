@@ -24,6 +24,7 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.log4j.Log4j2;
 
+
 /**
  * Litcal Swing App.
  */
@@ -34,6 +35,7 @@ public class LitcalGui implements Runnable
 
     private Font iconFont;
 
+    @Inject
     private JFrame frame;
     
     @Inject
@@ -42,6 +44,9 @@ public class LitcalGui implements Runnable
     @Inject
     private ApplicationContext ctx;
     
+    @Inject
+    private FrameSetup frameSetup;
+        
     @Value ("${git.build.version}")
     private String gitVersion;
 
@@ -50,7 +55,9 @@ public class LitcalGui implements Runnable
 
     @Value ("${git.commit.id.abbrev}")
     private String gitCommitId;
-    
+
+
+        
     private Locale myLocale = null;
     
     /**
@@ -71,8 +78,6 @@ public class LitcalGui implements Runnable
 
     private void initGui ()
     {
-        frame = new JFrame ();
-
         myLocale = (Locale) ctx.getBean ("locale");
         
         LOG.debug ("in initGui, locale is " + myLocale);
@@ -89,24 +94,23 @@ public class LitcalGui implements Runnable
             frame.dispose ();
         }
         
-        FrameSetup.setupFrame (frame, myLocale, msgSource, gitVersion, 
-            gitCommitTime, gitCommitId, this);
+        frameSetup.setupFrame ();
         
         //Display the window.
         frame.pack ();
         frame.setVisible (true);
     }
 
-    void shutdownApp (final JFrame frame, final Locale locale)
+    void shutdownApp ()
     {
         String [] options = new String []
-        {msgSource.getMessage ("yesLabel", null, locale),
-         msgSource.getMessage ("noLabel", null, locale)};
+        {msgSource.getMessage ("yesLabel", null, myLocale),
+         msgSource.getMessage ("noLabel", null, myLocale)};
 
         // icon is font-awesome question mark
         int choice = JOptionPane.showOptionDialog (frame,
-                msgSource.getMessage ("quitQuestion", null, locale),
-                msgSource.getMessage ("quitTitle", null, locale),
+                msgSource.getMessage ("quitQuestion", null, myLocale),
+                msgSource.getMessage ("quitTitle", null, myLocale),
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 makeIcon ('\uf128'), options, options[0]);
@@ -120,21 +124,19 @@ public class LitcalGui implements Runnable
         frame.dispose ();
     }
 
-    void showAbout (final JFrame frame, final Locale locale,
-                    final String version, final String commitTime,
-                    final String commitId)
+    void showAbout ()
     {
         String [] options = new String []
-        {msgSource.getMessage ("okLabel", null, locale)};
+        {msgSource.getMessage ("okLabel", null, myLocale)};
 
         // icon is font-awesome exclamation        
         JOptionPane.showOptionDialog (frame,
                 msgSource.getMessage ("litcalGui",
                     new Object []
-                        {(Object) version, (Object) commitTime,
-                         (Object) commitId},
-                    locale),
-                msgSource.getMessage ("aboutTitle", null, locale),
+                        {(Object) gitVersion, (Object) gitCommitTime,
+                         (Object) gitCommitId},
+                    myLocale),
+                msgSource.getMessage ("aboutTitle", null, myLocale),
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.INFORMATION_MESSAGE,
                 makeIcon ('\uf12a'), options, options[0]);

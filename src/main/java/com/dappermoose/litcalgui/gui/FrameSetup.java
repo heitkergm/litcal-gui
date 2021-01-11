@@ -10,6 +10,7 @@ import java.awt.event.WindowEvent;
 import java.net.URL;
 import java.util.Locale;
 
+import javax.inject.Inject;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -23,7 +24,9 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Component;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -33,20 +36,32 @@ import lombok.extern.log4j.Log4j2;
  * @author matt
  */
 @Log4j2
+@Component
 public final class FrameSetup
 {
+    @Inject
+    private ApplicationContext ctx;
+        
+    @Inject
+    private JFrame frame;
+    
+    @Inject
+    private MessageSource messageSource;
+    
+    @Inject
+    private LitcalGui lg;
+
+    private Locale myLocale = null;
+   
     private FrameSetup ()
             
     {
     }
     
-    protected static void setupFrame (final JFrame frame, final Locale myLocale,
-                                  final MessageSource msgSource, 
-                                  final String gitVersion, 
-                                  final String gitCommitTime,
-                                  final String gitCommitId,
-                                  final LitcalGui lg)
+    protected void setupFrame ()
     {
+        myLocale = (Locale) ctx.getBean ("locale");
+        
         try
         {
             UIManager.setLookAndFeel (
@@ -73,7 +88,7 @@ public final class FrameSetup
         UIManager.put ("Menu.foreground", Color.WHITE);
 
         //Create and set up the window.
-        frame.setTitle (msgSource.getMessage ("litcalLabel", null, myLocale));
+        frame.setTitle (messageSource.getMessage ("litcalLabel", null, myLocale));
         
         // make sure that we ASK before closing the main frame
         frame.setDefaultCloseOperation (WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -83,7 +98,7 @@ public final class FrameSetup
             public void windowClosing (final WindowEvent e)
             {
                 LOG.debug ("Clicked on exit");
-                lg.shutdownApp (frame, myLocale);
+                lg.shutdownApp ();
             }
         });
 
@@ -114,10 +129,10 @@ public final class FrameSetup
         // make menu bar
         JMenuBar menuBar = new JMenuBar ();
         JMenu fileMenu = new JMenu (
-                          msgSource.getMessage ("fileLabel", null, myLocale));
+                        messageSource.getMessage ("fileLabel", null, myLocale));
         fileMenu.setMnemonic (KeyEvent.VK_F);
         JMenuItem exitItem = new JMenuItem (
-                          msgSource.getMessage ("exitLabel", null, myLocale));
+                        messageSource.getMessage ("exitLabel", null, myLocale));
         exitItem.setMnemonic (KeyEvent.VK_E);
         exitItem.addActionListener (new ActionListener ()
         {
@@ -125,7 +140,7 @@ public final class FrameSetup
             public void actionPerformed (final ActionEvent e)
             {
                 LOG.debug ("Chose File->Exit");
-                lg.shutdownApp (frame, myLocale);
+                lg.shutdownApp ();
             }
         });
         fileMenu.add (exitItem);
@@ -133,11 +148,11 @@ public final class FrameSetup
 
         // request year
         JMenu calMenu = new JMenu (
-                          msgSource.getMessage ("calLabel", null, myLocale));
+                         messageSource.getMessage ("calLabel", null, myLocale));
         calMenu.setMnemonic (KeyEvent.VK_C);
 
         JMenuItem makeItem = new JMenuItem (
-                         msgSource.getMessage ("makeLabel", null, myLocale));
+                        messageSource.getMessage ("makeLabel", null, myLocale));
         makeItem.setMnemonic (KeyEvent.VK_M);
         makeItem.addActionListener (new ActionListener ()
         {
@@ -145,8 +160,7 @@ public final class FrameSetup
             public void actionPerformed (final ActionEvent e)
             {
                 LOG.debug ("Chose Calendar->Make");
-                lg.showAbout (frame, myLocale, gitVersion, gitCommitTime,
-                              gitCommitId);
+                lg.showAbout ();
             }
         });
         calMenu.add (makeItem);
@@ -156,10 +170,10 @@ public final class FrameSetup
 
         // help and about
         JMenu helpMenu = new JMenu (
-                          msgSource.getMessage ("helpLabel", null, myLocale));
+                        messageSource.getMessage ("helpLabel", null, myLocale));
         helpMenu.setMnemonic (KeyEvent.VK_H);
         JMenuItem aboutItem = new JMenuItem (
-                         msgSource.getMessage ("aboutLabel", null, myLocale));
+                       messageSource.getMessage ("aboutLabel", null, myLocale));
         aboutItem.setMnemonic (KeyEvent.VK_A);
         aboutItem.addActionListener (new ActionListener ()
         {
@@ -167,8 +181,7 @@ public final class FrameSetup
             public void actionPerformed (final ActionEvent e)
             {
                 LOG.debug ("Chose Help->About");
-                lg.showAbout (frame, myLocale, gitVersion, gitCommitTime,
-                              gitCommitId);
+                lg.showAbout ();
             }
         });
         helpMenu.add (aboutItem);
