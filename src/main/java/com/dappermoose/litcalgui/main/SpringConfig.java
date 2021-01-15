@@ -47,7 +47,7 @@ public class SpringConfig
     }
 
     @Bean
-    public PropertySourcesPlaceholderConfigurer placeholderConfigurer ()
+    public static PropertySourcesPlaceholderConfigurer placeholderConfigurer ()
     {
         PropertySourcesPlaceholderConfigurer propsConfig = 
             new PropertySourcesPlaceholderConfigurer ();

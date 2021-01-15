@@ -27,7 +27,7 @@
         <checkstyle.file.config>checkstyle.xml</checkstyle.file.config>
         <checkstyle.file.suppress>checkstyle-suppressions.xml</checkstyle.file.suppress>
         <checkstyle.version>8.39</checkstyle.version>
-        <font-awesome.version>5.15.1</font-awesome.version>
+        <font-awesome.version>5.15.2</font-awesome.version>
         <inject.version>1</inject.version>
         <junit-jupiter.version>5.7.0</junit-jupiter.version>
         <log4j2.version>2.14.0</log4j2.version>
@@ -38,7 +38,7 @@
         <pmd.version>6.30.0</pmd.version>
         <slf4j.version>2.0.0-alpha1</slf4j.version>
         <spotbugs.version>4.2.0</spotbugs.version>
-        <spring-boot.version>2.4.1</spring-boot.version>
+        <spring-boot.version>2.4.2</spring-boot.version>
 
         <!-- plugins -->
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
