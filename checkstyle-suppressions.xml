@@ -4,7 +4,7 @@
      "http://checkstyle.sourceforge.net/dtds/suppressions_1_0.dtd">
 
 <suppressions>
-    <suppress checks="UncommentedMain" files="Main.java" lines="31" />
+    <suppress checks="UncommentedMain" files="Main.java" lines="29" />
     <suppress checks="AvoidEscapedUnicodeCharacters" files="ActionListeners"
-              lines="60,86" />
+              lines="52,78" />
 </suppressions>

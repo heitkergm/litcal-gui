@@ -1,7 +1,5 @@
 package com.dappermoose.litcalgui.main;
 
-import java.util.Locale;
-
 import javax.swing.SwingUtilities;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -40,24 +38,15 @@ public final class Main
         }
         
         AnnotationConfigApplicationContext context =
-            new AnnotationConfigApplicationContext (SpringConfig.class);
+            new AnnotationConfigApplicationContext ();
         context.getEnvironment ().getPropertySources ().addFirst (ps);
                
-        // get the locale and save it off as a bean
-        LOG.debug ("context is " + context);
-        String localeName = context.getEnvironment ().getProperty ("locale");
-        LOG.debug ("locale is " + localeName);
-        if (localeName == null)
-        {
-            localeName = Locale.getDefault ().getDisplayName ();
-        }
-        context.registerBean ("locale", Locale.class, localeName);
-        Locale myLocale = context.getBean (Locale.class);
-        LOG.debug ("locale bean is " + myLocale);
-
-
         // make sure our context shuts down when JVM wants to
         context.registerShutdownHook ();
+        
+        // now run SpringConfig and inject the locale bean
+        context.register (SpringConfig.class);
+        context.refresh ();
 
         // our main display class is a bean.
         LitcalGui gui = context.getBean (LitcalGui.class);

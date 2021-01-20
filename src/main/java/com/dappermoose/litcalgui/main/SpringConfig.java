@@ -1,7 +1,11 @@
 package com.dappermoose.litcalgui.main;
 
+import java.util.Locale;
+
+import javax.inject.Inject;
 import javax.swing.JFrame;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,6 +24,9 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class SpringConfig
 {
+    @Inject
+    ApplicationContext context;
+    
     /**
      * Message source.
      *
@@ -44,6 +51,24 @@ public class SpringConfig
     JFrame frame ()
     {
         return new JFrame ();
+    }
+    
+    @Bean
+    Locale locale ()
+    {
+        // get the locale and save it off as a bean
+        LOG.debug ("context is " + context);
+        String localeName = context.getEnvironment ().getProperty ("locale");
+        LOG.debug ("locale is " + localeName);
+        if (localeName == null)
+        {
+            localeName = Locale.getDefault ().getDisplayName ();
+        }
+        
+        Locale myLocale = new Locale (localeName);
+        LOG.debug ("locale bean is " + myLocale);
+        
+        return myLocale;
     }
 
     @Bean

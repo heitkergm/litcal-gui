@@ -7,7 +7,6 @@ import java.util.Locale;
 import javax.inject.Inject;
 import javax.swing.JFrame;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
@@ -29,15 +28,10 @@ public class LitcalGui implements Runnable
     private MessageSource msgSource;
     
     @Inject
-    private ApplicationContext ctx;
-    
-    @Inject
     private FrameSetup frameSetup;
     
     @Inject
-    private ActionListeners al;
-        
-    private Locale myLocale = null;
+    private Locale myLocale;
     
     /**
      * LitcalGui constructor.
@@ -57,12 +51,8 @@ public class LitcalGui implements Runnable
 
     private void initGui ()
     {
-        myLocale = (Locale) ctx.getBean ("locale");
-        
         LOG.debug ("in initGui, locale is " + myLocale);
-        
-        al.setupMyLocale (myLocale);
-        
+               
         try
         {
             MyIconImage.setupIconFont (myLocale, msgSource);

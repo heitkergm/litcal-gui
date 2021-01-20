@@ -12,7 +12,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
@@ -34,13 +33,10 @@ public final class MakeMenuBar
     private MessageSource messageSource;
     
     @Inject
-    private ApplicationContext ctx;          
+    private Locale myLocale;          
             
     JMenuBar makeMenuBar ()
     {
-        
-        Locale myLocale = (Locale) ctx.getBean ("locale");
-        
         // make menu bar
         JMenuBar menuBar = new JMenuBar ();
         JMenu fileMenu = new JMenu (

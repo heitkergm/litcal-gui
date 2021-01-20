@@ -34,17 +34,9 @@ public final class ActionListeners
     @Value ("${git.commit.id.abbrev}")
     private String gitCommitId;
     
+    @Inject
     private Locale myLocale;
-    
-    private ActionListeners ()
-    {
-    }
-    
-    void setupMyLocale (final Locale locale)
-    {
-        myLocale = locale;
-    }
-    
+        
     void shutdownApp ()
     {
         String [] options = new String []

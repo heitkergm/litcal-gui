@@ -16,7 +16,6 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
@@ -32,9 +31,6 @@ import lombok.extern.log4j.Log4j2;
 public final class FrameSetup
 {
     @Inject
-    private ApplicationContext ctx;
-        
-    @Inject
     private JFrame frame;
     
     @Inject
@@ -49,7 +45,8 @@ public final class FrameSetup
     @Inject
     private MakeMenuBar mmb;
 
-    private Locale myLocale = null;
+    @Inject
+    private Locale myLocale;
    
     private FrameSetup ()
             
@@ -57,9 +54,7 @@ public final class FrameSetup
     }
     
     protected void setupFrame ()
-    {
-        myLocale = (Locale) ctx.getBean ("locale");
-        
+    {   
         try
         {
             UIManager.setLookAndFeel (
