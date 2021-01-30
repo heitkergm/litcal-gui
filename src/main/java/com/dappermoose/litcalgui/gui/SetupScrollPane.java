@@ -20,11 +20,11 @@ public final class SetupScrollPane
     {
         // create JTextPane
         JTextPane textPane = new JTextPane ();
-        textPane.setPreferredSize (new Dimension (640, 480));
+        textPane.setPreferredSize (new Dimension (1024, 768));
         textPane.setEditable (false);
         textPane.setContentType ("text/html");
         textPane.setText ("<html>\n" + "<head>\n" + "<style type=\"text/css\">\n" +
-            "body {font-family:sans-serif; font-size: large; background-color: black; color: white}\n" +
+            "body {font-family:sans-serif; font-size: x-large; background-color: black; color: white}\n" +
             "</style>\n" + "</head>\n" + "<body>\n" + "Hello\n" + "</body>\n" +
             "</html>\n");
 

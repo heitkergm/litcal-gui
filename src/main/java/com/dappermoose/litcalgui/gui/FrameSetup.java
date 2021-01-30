@@ -1,6 +1,7 @@
 package com.dappermoose.litcalgui.gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.net.URL;
@@ -79,6 +80,12 @@ public final class FrameSetup
         UIManager.put ("MenuBar.background", Color.BLACK);
         UIManager.put ("MenuBar.foreground", Color.WHITE);
         UIManager.put ("Menu.foreground", Color.WHITE);
+
+        Font f = new Font ("sans-serif", Font.PLAIN, 18);
+        UIManager.put ("Menu.font", f);
+        UIManager.put ("MenuItem.font", f);
+        UIManager.put ("OptionPane.messageFont", f);
+        UIManager.put ("OptionPane.buttonFont", f);
 
         //Create and set up the window.
         frame.setTitle (messageSource.getMessage ("litcalLabel", null, myLocale));
