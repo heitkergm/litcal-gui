@@ -23,10 +23,17 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <skip-checks>false</skip-checks>
         <java.version>11</java.version>
-        <lombok.version>1.18.18</lombok.version>
-        <pmd.version>6.32.0</pmd.version>
+        <lombok.version>edge-SNAPSHOT</lombok.version>
+        <pmd.version>6.33.0</pmd.version>
         <spring-boot.version>2.4.4</spring-boot.version>
     </properties>
+
+<repositories>
+	<repository>
+		<id>projectlombok.org</id>
+		<url>https://projectlombok.org/edge-releases</url>
+	</repository>
+</repositories>
 
     <dependencies>
         <dependency>
@@ -392,6 +399,7 @@
                 </executions>
                 <configuration>><skip>${skip-checks}</skip></configuration>
             </plugin>
+<!--
             <plugin>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok-maven-plugin</artifactId>
@@ -416,6 +424,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
+-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
