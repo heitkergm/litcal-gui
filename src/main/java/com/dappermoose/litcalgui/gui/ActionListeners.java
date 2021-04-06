@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * home of the action listeners.
  * for the menubar and frame.
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Component;
  * @author matt
  */
 @Component
+@Log4j2
 public final class ActionListeners
 {
     @Inject
@@ -76,5 +79,10 @@ public final class ActionListeners
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.INFORMATION_MESSAGE,
                 MyIconImage.makeIcon ('\uf12a'), options, options[0]);
+    }
+    
+    void makeCalendar ()
+    {
+        LOG.debug ("entered makeCalendar()");
     }
 }

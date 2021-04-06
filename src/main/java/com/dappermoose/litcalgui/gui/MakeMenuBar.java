@@ -71,7 +71,7 @@ public final class MakeMenuBar
             public void actionPerformed (final ActionEvent e)
             {
                 LOG.debug ("Chose Calendar->Make");
-                al.showAbout ();
+                al.makeCalendar ();
             }
         });
         calMenu.add (makeItem);
