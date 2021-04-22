@@ -450,6 +450,7 @@
                 <artifactId>dependency-check-maven</artifactId>
                 <version>6.1.5</version>
                 <configuration>
+                    <skip>${skip-checks}</skip>
                     <suppressionFiles>dependency-suppressions.xml</suppressionFiles>
                     <skipProvidedScope>true</skipProvidedScope>
                     <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
