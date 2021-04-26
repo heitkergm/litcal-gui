@@ -115,7 +115,7 @@
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>8.41.1</version>
+                        <version>8.42</version>
                     </dependency>
                 </dependencies>
                 <executions>
@@ -129,7 +129,9 @@
                             <consoleOutput>true</consoleOutput>
                             <failsOnError>true</failsOnError>
                             <linkXRef>false</linkXRef>
-                            <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                            <includeTestSourceDirectory>false</includeTestSourceDirectory>
+                            <includeResources>false</includeResources>
+                            <includeTestResources>false</includeTestResources>
                             <skip>${skip-checks}</skip>
                         </configuration>
                         <goals>
