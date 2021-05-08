@@ -22,6 +22,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <skip-checks>false</skip-checks>
+        <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
         <java.version>11</java.version>
         <lombok.version>1.18.20</lombok.version>
         <pmd.version>6.34.0</pmd.version>
@@ -32,7 +33,7 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>6.2.0.Final</version>
+            <version>${hibernate-validator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
@@ -277,6 +278,7 @@
                                     <mainClass>com.dappermoose.litcalgui.main.Main</mainClass>
                                     <manifestEntries>
                                         <Multi-Release>true</Multi-Release>
+                                        <Implementation-Version>${hibernate-validator.version}</Implementation-Version>
                                     </manifestEntries>
                                 </transformer>
 

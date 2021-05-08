@@ -14,6 +14,7 @@
         </Appenders>
 	<Loggers>
 		<logger name="org.springframework" level="info" />
+		<logger name="org.hibernate" level="info" />
 		<Root level="debug">
 			<AppenderRef ref="Console" />
 		</Root>
