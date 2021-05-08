@@ -4,6 +4,9 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.swing.JFrame;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
@@ -80,5 +83,12 @@ public class SpringConfig
         propsConfig.setIgnoreResourceNotFound (true);
         propsConfig.setIgnoreUnresolvablePlaceholders (true);
         return propsConfig;
+    }
+
+    @Bean
+    Validator validator ()
+    {
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory ();
+        return factory.getValidator ();
     }
 }
