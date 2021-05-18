@@ -84,5 +84,16 @@ public final class ActionListeners
     void makeCalendar ()
     {
         LOG.debug ("entered makeCalendar()");
+        String year = (String) JOptionPane.showInputDialog (frame,
+            "enter the year", "data entry", JOptionPane.PLAIN_MESSAGE,
+            null, null, null);
+        if (year == null)
+        {
+            LOG.debug ("year is null");
+        }
+        else
+        {
+            LOG.debug ("year is not null " + year);
+        }
     }
 }
