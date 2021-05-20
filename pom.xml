@@ -13,10 +13,6 @@
         <url>https://www.dappermoose.com</url>
     </organization>
 
-    <prerequisites>
-        <maven>3.8.1</maven>
-    </prerequisites>
-
     <name>litcal-gui</name>
 
     <properties>
@@ -206,7 +202,7 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>3.6.3</version>
+                                    <version>3.8.1</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
                                     <version>${java.version}</version>
