@@ -24,7 +24,7 @@ import lombok.extern.log4j.Log4j2;
 
 /**
  * initial frame setup.
- * 
+ *
  * @author matt
  */
 @Log4j2
@@ -33,41 +33,41 @@ public final class FrameSetup
 {
     @Inject
     private JFrame frame;
-    
+
     @Inject
     private MessageSource messageSource;
-    
+
     @Inject
     private ActionListeners al;
-    
+
     @Inject
     private SetupScrollPane ssp;
-    
+
     @Inject
     private MakeMenuBar mmb;
 
     @Inject
     private Locale myLocale;
-   
+
     private FrameSetup ()
-            
+
     {
     }
-    
+
     protected void setupFrame ()
-    {   
+    {
         try
         {
             UIManager.setLookAndFeel (
-                UIManager.getSystemLookAndFeelClassName ());
+                    UIManager.getSystemLookAndFeelClassName ());
         }
-        catch (ClassNotFoundException | InstantiationException |
-               IllegalAccessException | UnsupportedLookAndFeelException ex)
+        catch (ClassNotFoundException | InstantiationException
+                | IllegalAccessException | UnsupportedLookAndFeelException ex)
         {
             LOG.fatal ("UIManager look and feel error", ex);
             frame.dispose ();
         }
-        
+
         UIManager.put ("OptionPane.background", Color.BLACK);
         UIManager.put ("OptionPane.foreground", Color.WHITE);
         UIManager.put ("OptionPane.messageForeground", Color.WHITE);
@@ -86,10 +86,11 @@ public final class FrameSetup
         UIManager.put ("MenuItem.font", f);
         UIManager.put ("OptionPane.messageFont", f);
         UIManager.put ("OptionPane.buttonFont", f);
+        UIManager.put ("TextField.font", f);
 
         //Create and set up the window.
         frame.setTitle (messageSource.getMessage ("litcalLabel", null, myLocale));
-        
+
         // make sure that we ASK before closing the main frame
         frame.setDefaultCloseOperation (WindowConstants.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener (new WindowAdapter ()
@@ -105,14 +106,14 @@ public final class FrameSetup
         JScrollPane scrollPane = ssp.setupScrollPane ();
         frame.getContentPane ().add (scrollPane);
 
-        URL imgURL =  FrameSetup.class.getResource ("/favicon.png");
+        URL imgURL = FrameSetup.class.getResource ("/favicon.png");
         LOG.debug ("imgURL is " + (imgURL == null ? "not " : "") + "available");
         if (imgURL != null)
         {
             ImageIcon icon = new ImageIcon (imgURL);
             frame.setIconImage (icon.getImage ());
         }
-        
+
         JOptionPane.setDefaultLocale (myLocale);
 
         JMenuBar menuBar = mmb.makeMenuBar ();
