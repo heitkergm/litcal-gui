@@ -444,6 +444,7 @@
                             <goal>check</goal>
                             <goal>cpd-check</goal>
                         </goals>
+                        <phase>validate</phase>
                     </execution>
                 </executions>
                 <dependencies>
