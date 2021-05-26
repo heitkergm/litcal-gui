@@ -28,6 +28,9 @@ public final class MakeMenuBar
 {
     @Inject
     private ActionListeners al;
+    
+    @Inject
+    private MakeCalendar mc;
 
     @Inject
     private MessageSource messageSource;
@@ -71,7 +74,7 @@ public final class MakeMenuBar
             public void actionPerformed (final ActionEvent e)
             {
                 LOG.debug ("Chose Calendar->Make");
-                al.makeCalendar ();
+                mc.makeCalendar ();
             }
         });
         calMenu.add (makeItem);
