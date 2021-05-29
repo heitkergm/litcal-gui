@@ -86,7 +86,7 @@ public final class FrameSetup
         UIManager.put ("MenuItem.font", f);
         UIManager.put ("OptionPane.messageFont", f);
         UIManager.put ("OptionPane.buttonFont", f);
-        UIManager.put ("TextField.font", f);
+        UIManager.put ("Spinner.font", f);
 
         //Create and set up the window.
         frame.setTitle (messageSource.getMessage ("litcalLabel", null, myLocale));

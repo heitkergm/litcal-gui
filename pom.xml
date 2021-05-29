@@ -21,7 +21,7 @@
         <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
         <java.version>11</java.version>
         <lombok.version>1.18.20</lombok.version>
-        <pmd.version>6.34.0</pmd.version>
+        <pmd.version>6.35.0</pmd.version>
         <spring-boot.version>2.5.0</spring-boot.version>
     </properties>
 
@@ -463,7 +463,7 @@
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>6.1.6</version>
+                <version>6.2.0</version>
                 <configuration>
                     <skip>${skip-checks}</skip>
                     <suppressionFiles>dependency-suppressions.xml</suppressionFiles>

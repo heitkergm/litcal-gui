@@ -5,8 +5,9 @@ import java.util.Locale;
 import javax.inject.Inject;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.text.PlainDocument;
+import javax.swing.JSpinner;
+import javax.swing.JSpinner.NumberEditor;
+import javax.swing.SpinnerNumberModel;
 
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
@@ -41,11 +42,10 @@ public class MakeCalendar
             msgSource.getMessage ("noLabel", null, myLocale)
         };
         
-        JTextField yearInput = new JTextField (1);
+        JSpinner yearInput = new JSpinner (new SpinnerNumberModel (2020, 2000, 2050, 1));
+        yearInput.setEditor (new NumberEditor (yearInput, "####"));
+        
         yearInput.addAncestorListener (new RequestFocusListener ());
-        PlainDocument doc = (PlainDocument) yearInput.getDocument ();
-        doc.setDocumentFilter (new MyIntFilter ());
-
         Object[] message = { "enter the year, you rascal", yearInput };
 
         // icon is font-awesome question mark
@@ -58,8 +58,8 @@ public class MakeCalendar
         if (action == JOptionPane.OK_OPTION)
         {
             LOG.debug ("entry made");
-            String year = yearInput.getText ();
-            if (year != null && !year.trim ().isEmpty ())
+            Integer year = (Integer) yearInput.getValue ();
+            if (year != null)
             {
                 LOG.debug ("year is not null " + year);
             }
