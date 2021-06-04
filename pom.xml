@@ -280,6 +280,8 @@
                                         <exclude>META-INF/spring.tooling</exclude>
                                         <exclude>META-INF/versions/9/module-info.class</exclude>
                                         <exclude>module-info.class</exclude>
+                                        <exclude>META-INF/LICENSE.md</exclude>
+                                        <exclude>META-INF/NOTICE.md</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
