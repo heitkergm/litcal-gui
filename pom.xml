@@ -18,8 +18,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <skip-checks>false</skip-checks>
-        <hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
         <java.version>11</java.version>
+        <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
+        <hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
         <lombok.version>1.18.20</lombok.version>
         <pmd.version>6.35.0</pmd.version>
         <spring-boot.version>2.5.0</spring-boot.version>
@@ -99,14 +100,14 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <artifactId>org.codehaus.mojo</artifactId>
-                    <groupId>exec-maven-plugin</groupId>
-                    <version>3.0.0</version>
-                </plugin>
-                <plugin>
                     <groupId>io.takari</groupId>
                     <artifactId>maven</artifactId>
                     <version>0.7.7</version>
+                </plugin>
+                <plugin>
+                    <artifactId>org.codehaus.mojo</artifactId>
+                    <groupId>exec-maven-plugin</groupId>
+                    <version>3.0.0</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -421,7 +422,7 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>><skip>${skip-checks}</skip></configuration>
+                <configuration><skip>${skip-checks}</skip></configuration>
             </plugin>
             <plugin>
                 <groupId>org.projectlombok</groupId>
