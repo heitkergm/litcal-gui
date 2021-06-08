@@ -21,8 +21,10 @@
         <java.version>11</java.version>
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
+        <jboss-logging.version>3.4.2.Final</jboss-logging.version>
         <lombok.version>1.18.20</lombok.version>
         <pmd.version>6.35.0</pmd.version>
+        <slf4j.version>2.0.0-alpha1</slf4j.version>
         <spring-boot.version>2.5.0</spring-boot.version>
     </properties>
 
@@ -31,17 +33,12 @@
             <dependency>
                 <groupId>org.jboss.logging</groupId>
                 <artifactId>jboss-logging</artifactId>
-                <version>3.4.2.Final</version>
+                <version>${jboss-logging.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>2.0.0-alpha1</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml</groupId>
-                <artifactId>classmate</artifactId>
-                <version>1.5.1</version>
+                <version>${slf4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -482,7 +479,7 @@
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>6.2.0</version>
+                <version>6.2.1</version>
                 <configuration>
                     <skip>${skip-checks}</skip>
                     <suppressionFiles>dependency-suppressions.xml</suppressionFiles>
