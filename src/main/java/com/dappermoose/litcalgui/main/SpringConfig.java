@@ -14,6 +14,8 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
 
+import org.webjars.WebJarAssetLocator;
+
 import lombok.extern.log4j.Log4j2;
 
 import jakarta.validation.Validation;
@@ -91,5 +93,11 @@ public class SpringConfig
     {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory ();
         return factory.getValidator ();
+    }
+
+    @Bean
+    WebJarAssetLocator locator ()
+    {
+        return new WebJarAssetLocator ();
     }
 }

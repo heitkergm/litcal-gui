@@ -16,6 +16,11 @@ import javax.swing.JLabel;
 
 import org.springframework.context.MessageSource;
 
+import org.webjars.WebJarAssetLocator;
+
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public final class MyIconImage
 {
     private MyIconImage ()
@@ -25,11 +30,14 @@ public final class MyIconImage
     private static Font iconFont;
    
     static void setupIconFont (final Locale myLocale,
-                                      final MessageSource msgSource)
+                               final MessageSource msgSource,
+                               final WebJarAssetLocator locator)
            throws FontFormatException, IOException
     {
+        String path = locator.getFullPath (msgSource.getMessage ("fa", null, myLocale));
+        LOG.debug ("path is " + path);
         InputStream is = MyIconImage.class.
-                getResourceAsStream (msgSource.getMessage ("fa", null, myLocale));
+                getResourceAsStream ("/" + path);
         iconFont = Font.createFont (Font.TRUETYPE_FONT, is);
         iconFont = iconFont.deriveFont (Font.PLAIN, 24f);
     }

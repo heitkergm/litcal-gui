@@ -10,8 +10,9 @@ import javax.swing.JFrame;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
-import lombok.extern.log4j.Log4j2;
+import org.webjars.WebJarAssetLocator;
 
+import lombok.extern.log4j.Log4j2;
 
 /**
  * Litcal Swing App.
@@ -33,6 +34,9 @@ public class LitcalGui implements Runnable
     @Inject
     private Locale myLocale;
     
+    @Inject
+    private WebJarAssetLocator locator;
+
     /**
      * LitcalGui constructor.
      */
@@ -55,7 +59,7 @@ public class LitcalGui implements Runnable
                
         try
         {
-            MyIconImage.setupIconFont (myLocale, msgSource);
+            MyIconImage.setupIconFont (myLocale, msgSource, locator);
         }
         catch (IOException | FontFormatException ex)
         {

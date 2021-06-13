@@ -91,8 +91,12 @@
             <artifactId>font-awesome</artifactId>
             <version>5.15.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator-core</artifactId>
+            <version>0.47</version>
+        </dependency>
     </dependencies>
-
     <build>
         <pluginManagement>
             <plugins>
