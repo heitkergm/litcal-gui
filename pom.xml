@@ -19,6 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <skip-checks>false</skip-checks>
         <java.version>11</java.version>
+        <classgraph.version>4.8.108</classgraph.version>
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
         <jboss-logging.version>3.4.2.Final</jboss-logging.version>
@@ -39,6 +40,11 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.classgraph</groupId>
+                <artifactId>classgraph</artifactId>
+                <version>${classgraph.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
