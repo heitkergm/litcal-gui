@@ -18,10 +18,6 @@ import org.webjars.WebJarAssetLocator;
 
 import lombok.extern.log4j.Log4j2;
 
-import jakarta.validation.Validation;
-import jakarta.validation.Validator;
-import jakarta.validation.ValidatorFactory;
-
 /**
  * The Class SpringConfig.
  */
@@ -86,13 +82,6 @@ public class SpringConfig
         propsConfig.setIgnoreResourceNotFound (true);
         propsConfig.setIgnoreUnresolvablePlaceholders (true);
         return propsConfig;
-    }
-
-    @Bean
-    Validator validator ()
-    {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory ();
-        return factory.getValidator ();
     }
 
     @Bean
