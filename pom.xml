@@ -21,8 +21,6 @@
         <java.version>11</java.version>
         <classgraph.version>4.8.108</classgraph.version>
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
-        <hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
-        <jboss-logging.version>3.4.2.Final</jboss-logging.version>
         <pmd.version>6.35.0</pmd.version>
         <slf4j.version>2.0.0-alpha1</slf4j.version>
         <spring-boot.version>2.5.1</spring-boot.version>
@@ -30,11 +28,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.jboss.logging</groupId>
-                <artifactId>jboss-logging</artifactId>
-                <version>${jboss-logging.version}</version>
-            </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -49,21 +42,6 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>jakarta.el</artifactId>
-            <version>4.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
-            <version>3.0.0</version>
-        </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j18-impl</artifactId>
@@ -298,7 +276,6 @@
                                     <mainClass>com.dappermoose.litcalgui.main.Main</mainClass>
                                     <manifestEntries>
                                         <Multi-Release>true</Multi-Release>
-                                        <Implementation-Version>${hibernate-validator.version}</Implementation-Version>
                                     </manifestEntries>
                                 </transformer>
 
