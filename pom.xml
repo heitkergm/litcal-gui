@@ -8,6 +8,15 @@
     <packaging>jar</packaging>
     <inceptionYear>2020</inceptionYear>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
     <organization>
         <name>Dappermoose</name>
         <url>https://www.dappermoose.com</url>
@@ -15,14 +24,18 @@
 
     <name>litcal-gui</name>
 
+    <scm>
+        <url>https://github.com/heitkergm/litcal-gui.git</url>
+    </scm>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
-        <classgraph.version>4.8.108</classgraph.version>
+        <classgraph.version>4.8.109</classgraph.version>
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <lombok.version>1.18.20</lombok.version>
         <pmd.version>6.36.0</pmd.version>
-        <slf4j.version>2.0.0-alpha1</slf4j.version>
+        <slf4j.version>2.0.0-alpha2</slf4j.version>
         <spring-boot.version>2.5.2</spring-boot.version>
     </properties>
 
@@ -143,7 +156,7 @@
                         <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>
                         <encoding>UTF-8</encoding>
                         <consoleOutput>true</consoleOutput>
-                        <failsOnError>true</failsOnError>
+                        <failsOnError>false</failsOnError>
                         <linkXRef>true</linkXRef>
                         <includeTestSourceDirectory>false</includeTestSourceDirectory>
                         <includeResources>false</includeResources>
@@ -167,7 +180,7 @@
                         <dependency>
                             <groupId>com.github.spotbugs</groupId>
                             <artifactId>spotbugs</artifactId>
-                            <version>4.2.3</version>
+                            <version>4.3.0</version>
                             <exclusions>
                                 <exclusion>
                                     <groupId>dom4j</groupId>
@@ -198,19 +211,6 @@
                         ${project.build.outputDirectory}/git.properties
                     </generateGitPropertiesFilename>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>validate</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -436,6 +436,7 @@
                             <report>licenses</report>
                             <report>plugin-management</report>
                             <report>plugins</report>
+                            <report>scm</report>
                             <report>summary</report>
                         </reports>
                     </reportSet>
