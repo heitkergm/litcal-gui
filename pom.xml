@@ -144,7 +144,7 @@
                         <encoding>UTF-8</encoding>
                         <consoleOutput>true</consoleOutput>
                         <failsOnError>true</failsOnError>
-                        <linkXRef>false</linkXRef>
+                        <linkXRef>true</linkXRef>
                         <includeTestSourceDirectory>false</includeTestSourceDirectory>
                         <includeResources>false</includeResources>
                         <includeTestResources>false</includeTestResources>
@@ -477,7 +477,7 @@
                 </reportSets>
                 <configuration>
                     <verbose>true</verbose>
-                    <linkXRef>false</linkXRef>
+                    <linkXRef>true</linkXRef>
                 </configuration>
             </plugin>
             <plugin>
