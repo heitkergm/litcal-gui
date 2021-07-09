@@ -31,7 +31,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
-        <classgraph.version>4.8.109</classgraph.version>
+        <classgraph.version>4.8.110</classgraph.version>
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <lombok.version>1.18.20</lombok.version>
         <pmd.version>6.36.0</pmd.version>
@@ -189,6 +189,11 @@
                             </exclusions>
                         </dependency>
                     </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>org.owasp</groupId>
+                    <artifactId>dependency-check-maven</artifactId>
+                    <version>6.2.2</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -542,7 +547,6 @@
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>6.2.2</version>
                 <reportSets>
                     <reportSet>
                         <reports>
