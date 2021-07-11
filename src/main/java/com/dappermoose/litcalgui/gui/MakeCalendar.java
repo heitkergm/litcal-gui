@@ -14,6 +14,9 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.log4j.Log4j2;
 
+import com.dappermoose.litcalgui.days.EasterDay;
+import com.dappermoose.litcalgui.days.LeapYear;
+
 /**
  * the guts of the calendar-making process.
  * 
@@ -55,10 +58,11 @@ public class MakeCalendar
                 JOptionPane.QUESTION_MESSAGE,
                 MyIconImage.makeIcon ('\uf128'), options, null);
 
+        Integer year;
         if (action == JOptionPane.OK_OPTION)
         {
             LOG.debug ("entry made");
-            Integer year = (Integer) yearInput.getValue ();
+            year = (Integer) yearInput.getValue ();
             if (year != null)
             {
                 LOG.debug ("year is not null " + year);
@@ -66,11 +70,24 @@ public class MakeCalendar
             else
             {
                 LOG.debug ("year is null");
+                return;
             }
         }
         else
         {
             LOG.debug ("canceled");
+            return;
         }
+
+        LOG.debug ("Liturgical year is " + year);
+        int easterDay = EasterDay.calcEaster (year);
+        String month = "March";
+        if (easterDay > 31)
+        {
+            easterDay -= 31;
+            month = "April";
+        }
+        LOG.debug ("Easter is " + month + " " + easterDay);
+        LOG.debug (year + " is " + (!LeapYear.isLeapYear (year) ? "not " : "") + "a leap year");
     }
 }
