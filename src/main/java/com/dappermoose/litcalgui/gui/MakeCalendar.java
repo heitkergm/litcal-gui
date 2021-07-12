@@ -12,10 +12,10 @@ import javax.swing.SpinnerNumberModel;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
-import lombok.extern.log4j.Log4j2;
-
 import com.dappermoose.litcalgui.days.EasterDay;
 import com.dappermoose.litcalgui.days.LeapYear;
+
+import lombok.extern.log4j.Log4j2;
 
 /**
  * the guts of the calendar-making process.
