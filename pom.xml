@@ -24,6 +24,8 @@
 
     <name>litcal-gui</name>
 
+    <url>file://${project.basedir}/target/site</url>
+
     <scm>
         <url>https://github.com/heitkergm/litcal-gui.git</url>
     </scm>
@@ -211,11 +213,13 @@
                         <excludeFilterFile>excludeFindbugs.xml</excludeFilterFile>
                         <includeTests>true</includeTests>
                         <plugins>
+<!--
                             <plugin>
                                 <groupId>com.h3xstream.findsecbugs</groupId>
                                 <artifactId>findsecbugs-plugin</artifactId>
                                 <version>${findsecbugs-plugin.version}</version>
                             </plugin>
+-->
                             <plugin>
                                 <groupId>com.mebigfatguy.sb-contrib</groupId>
                                 <artifactId>sb-contrib</artifactId>

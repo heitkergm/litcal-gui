@@ -28,10 +28,8 @@ public final class SetupScrollPane
             "</style>\n" + "</head>\n" + "<body>\n" + "Hello\n" + "</body>\n" +
             "</html>\n");
 
-        JScrollPane scrollPane = new JScrollPane (textPane,
+        return new JScrollPane (textPane,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        
-        return scrollPane;
     }   
 }

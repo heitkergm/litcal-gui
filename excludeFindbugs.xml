@@ -1,2 +1,10 @@
 <FindBugsFilter>
+    <Match>
+        <Class name="com.dappermoose.litcalgui.gui.MyIconImage" />
+        <Bug pattern="S508C_NO_SETLABELFOR" />
+    </Match>
+    <Match>
+        <Class name="com.dappermoose.litcalgui.gui.MyIconImage" />
+        <Bug pattern="S508C_SET_COMP_COLOR" />
+    </Match>
 </FindBugsFilter>
