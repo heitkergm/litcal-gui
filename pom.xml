@@ -36,7 +36,7 @@
         <classgraph.version>4.8.110</classgraph.version>
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <findsecbugs-plugin.version>1.11.0</findsecbugs-plugin.version>
-        <jackson.version>2.12.4</jackson.version>
+        <jackson.version>2.13.0-rc1</jackson.version>
         <lombok.version>1.18.20</lombok.version>
         <pmd.version>6.36.0</pmd.version>
         <sb-contrib.version>7.4.7</sb-contrib.version>
@@ -53,16 +53,13 @@
                 <artifactId>sb-contrib</artifactId>
                 <version>${sb-contrib.version}</version>
             </dependency>
+<!--
             <dependency>
                 <groupId>com.h3xstream.findsecbugs</groupId>
                 <artifactId>findsecbugs-plugin</artifactId>
                 <version>${findsecbugs-plugin.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-core</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
+-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -87,6 +84,13 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <!-- fixup javadoc generation -->
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-modules-java8</artifactId>
+            <version>2.13.0-rc1</version>
+            <type>pom</type>
+        </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j18-impl</artifactId>
@@ -385,6 +389,7 @@
                                         <exclude>module-info.class</exclude>
                                         <exclude>META-INF/LICENSE.md</exclude>
                                         <exclude>META-INF/NOTICE.md</exclude>
+                                        <exclude>META-INF/versions/11/module-info.class</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
