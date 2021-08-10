@@ -71,6 +71,7 @@
                 <version>${sb-contrib.version}</version>
             </dependency>
 <!--
+            findsecbugs does not support the current JVM .class layout
             <dependency>
                 <groupId>com.h3xstream.findsecbugs</groupId>
                 <artifactId>findsecbugs-plugin</artifactId>
