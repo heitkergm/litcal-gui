@@ -40,6 +40,9 @@ public final class ActionListeners
     @Inject
     private Locale myLocale;
 
+    /**
+     * action method for "shutdown".
+     */
     void shutdownApp ()
     {
         LOG.debug ("entered shutdownApp ()");
@@ -69,6 +72,9 @@ public final class ActionListeners
         frame.dispose ();
     }
 
+    /**
+     * action method for "about".
+     */
     void showAbout ()
     {
         String[] options = new String[]

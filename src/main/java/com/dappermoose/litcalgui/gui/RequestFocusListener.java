@@ -17,7 +17,7 @@ import lombok.extern.log4j.Log4j2;
 class RequestFocusListener implements AncestorListener
 {
 
-    private boolean removeListener = false;
+    private boolean remove = false;
 
     /**
      * Convenience constructor. The listener is only used once and then it is
@@ -35,20 +35,20 @@ class RequestFocusListener implements AncestorListener
      * @param removeListener when true this listener is only invoked once
      *                       otherwise it can be invoked multiple times.
      */
-    RequestFocusListener (final boolean remove)
+    RequestFocusListener (final boolean removeListener)
     {
-        removeListener = remove;
+        remove = removeListener;
     }
 
     @Override
     public void ancestorAdded (final AncestorEvent e)
     {
-        LOG.debug ("ancestor added, removeListener is " + Boolean.toString (removeListener));
+        LOG.debug ("ancestor added, remove is " + Boolean.toString (remove));
 
         JComponent component = e.getComponent ();
         component.requestFocusInWindow ();
 
-        if (removeListener)
+        if (remove)
         {
             component.removeAncestorListener (this);
         }

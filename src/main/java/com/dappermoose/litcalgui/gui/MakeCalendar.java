@@ -35,6 +35,9 @@ public class MakeCalendar
     @Inject
     private JFrame frame;
 
+    /**
+     * action method for "make calendar".
+     */
     void makeCalendar ()
     {
         LOG.debug ("entered makeCalendar()");

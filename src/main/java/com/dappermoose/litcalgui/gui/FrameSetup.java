@@ -54,6 +54,9 @@ public final class FrameSetup
     {
     }
 
+    /**
+     * routine which sets up the swing Frame object.
+     */
     protected void setupFrame ()
     {
         try

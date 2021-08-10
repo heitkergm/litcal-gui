@@ -20,6 +20,11 @@ import org.webjars.WebJarAssetLocator;
 
 import lombok.extern.log4j.Log4j2;
 
+/**
+ * class to provide the Font-Awesome icons as graphic images.
+ * 
+ * @author matt
+ */
 @Log4j2
 public final class MyIconImage
 {
@@ -29,6 +34,16 @@ public final class MyIconImage
     
     private static Font iconFont;
    
+    /**
+     * routine to instantiate the font awesome as an icon font.
+     * 
+     * @param myLocale the current locale
+     * @param msgSource the message bundles
+     * @param locator the webjars version-agnostic jar finder
+     * 
+     * @throws FontFormatException if error in font file
+     * @throws IOException if fount file not found
+     */
     static void setupIconFont (final Locale myLocale,
                                final MessageSource msgSource,
                                final WebJarAssetLocator locator)
@@ -42,6 +57,13 @@ public final class MyIconImage
         iconFont = iconFont.deriveFont (Font.PLAIN, 24f);
     }
     
+    /**
+     * This routine takes the font character and converts it to an icon.
+     * 
+     * @param text the font character to convert into an icon
+     * 
+     * @return the actual icon
+     */
     static ImageIcon makeIcon (final char text)
     {
         JLabel label = new JLabel (Character.toString (text));

@@ -38,6 +38,11 @@ public final class MakeMenuBar
     @Inject
     private Locale myLocale;          
             
+    /**
+     * creates the menubar object used in the program.
+     * 
+     * @return the menu bar object 
+     */
     JMenuBar makeMenuBar ()
     {
         // make menu bar

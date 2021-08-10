@@ -15,7 +15,12 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public final class SetupScrollPane
-{    
+{   
+    /**
+     * set up the scroll pane which shows the results.
+     * 
+     * @return the scroll pane with original contents
+     */
     JScrollPane setupScrollPane ()
     {
         // create JTextPane

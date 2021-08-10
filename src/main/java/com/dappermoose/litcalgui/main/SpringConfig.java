@@ -27,7 +27,7 @@ import lombok.extern.log4j.Log4j2;
 public class SpringConfig
 {
     @Inject
-    ApplicationContext context;
+    private ApplicationContext context;
     
     /**
      * Message source.
@@ -45,7 +45,7 @@ public class SpringConfig
     }
     
     /**
-     * frame.
+     * frame bean.
      *
      * @return the swing Frame
      */
@@ -55,6 +55,11 @@ public class SpringConfig
         return new JFrame ();
     }
     
+    /**
+     * the locale bean.
+     * 
+     * @return the locale object in the bean
+     */
     @Bean
     Locale locale ()
     {
@@ -73,6 +78,11 @@ public class SpringConfig
         return myLocale;
     }
 
+    /**
+     * Add the entries from git.properties into Spring environment.
+     * 
+     * @return propsConfig - the new property sources placeholder configurer.
+     */
     @Bean
     public static PropertySourcesPlaceholderConfigurer placeholderConfigurer ()
     {
@@ -84,6 +94,11 @@ public class SpringConfig
         return propsConfig;
     }
 
+    /**
+     * the locator bean.
+     * 
+     * @return the webjar asset locator saved in the bean
+     */
     @Bean
     WebJarAssetLocator locator ()
     {

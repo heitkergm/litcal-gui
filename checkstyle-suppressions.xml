@@ -6,7 +6,7 @@
 <suppressions>
     <suppress checks="UncommentedMain" files="Main.java" lines="29" />
     <suppress checks="AvoidEscapedUnicodeCharacters" files="ActionListeners"
-              lines="58,91" />
+              lines="61,97" />
     <suppress checks="AvoidEscapedUnicodeCharacters" files="MakeCalendar"
-              lines="59" />
+              lines="62" />
 </suppressions>
