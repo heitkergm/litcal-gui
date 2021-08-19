@@ -10,6 +10,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
@@ -17,7 +18,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.webjars.WebJarAssetLocator;
 
 import lombok.extern.log4j.Log4j2;
-import org.springframework.context.annotation.DependsOn;
 
 /**
  * The Class SpringConfig.
@@ -109,10 +109,10 @@ public class SpringConfig
     /**
      * weekday names bean.
      * 
-     * return the list of date names
+     * @return the list of date names
      */
     @Bean
-    @DependsOn ({"messageSource","locale"})
+    @DependsOn ({"messageSource", "locale"})
     String[] dateNames ()
     {
         String [] dateNames = new String[7];

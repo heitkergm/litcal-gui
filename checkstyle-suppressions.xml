@@ -8,5 +8,5 @@
     <suppress checks="AvoidEscapedUnicodeCharacters" files="ActionListeners"
               lines="61,97" />
     <suppress checks="AvoidEscapedUnicodeCharacters" files="MakeCalendar"
-              lines="62" />
+              lines="66" />
 </suppressions>
