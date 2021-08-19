@@ -58,8 +58,8 @@
         <lombok.version>1.18.20</lombok.version>
         <pmd.version>6.37.0</pmd.version>
         <sb-contrib.version>7.4.7</sb-contrib.version>
-        <slf4j.version>2.0.0-alpha4</slf4j.version>
-        <spring-boot.version>2.5.3</spring-boot.version>
+        <slf4j.version>1.8.0-beta4</slf4j.version>
+        <spring-boot.version>2.5.4</spring-boot.version>
         <spring-framework.version>5.3.9</spring-framework.version>
         <versions-maven-plugin.version>2.8.1</versions-maven-plugin.version>
     </properties>
@@ -313,6 +313,9 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>${versions-maven-plugin.version}</version>
+                <configuration>
+                    <rulesUri>file://${project.basedir}/versions-rule-set.xml</rulesUri>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>io.github.git-commit-id</groupId>
