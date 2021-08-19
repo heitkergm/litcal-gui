@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import com.dappermoose.litcalgui.days.EasterDay;
 import com.dappermoose.litcalgui.days.LeapYear;
+import com.dappermoose.litcalgui.days.WeekDay;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -34,6 +35,9 @@ public class MakeCalendar
 
     @Inject
     private JFrame frame;
+    
+    @Inject
+    private String [] dateNames;
 
     /**
      * action method for "make calendar".
@@ -91,6 +95,10 @@ public class MakeCalendar
             month = "April";
         }
         LOG.debug ("Easter is " + month + " " + easterDay);
-        LOG.debug (year + " is " + (!LeapYear.isLeapYear (year) ? "not " : "") + "a leap year");
+        LOG.debug (year + " is " + (!LeapYear.isLeapYear (year) ? "not " : "") +
+                "a leap year");
+        
+        int jan1date = WeekDay.calcWeekDate (year, 1, 1);
+        LOG.debug ("January 1st is a " + dateNames[jan1date]);
     }
 }

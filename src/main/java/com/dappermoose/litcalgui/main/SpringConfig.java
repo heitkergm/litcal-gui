@@ -17,6 +17,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.webjars.WebJarAssetLocator;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.context.annotation.DependsOn;
 
 /**
  * The Class SpringConfig.
@@ -103,5 +104,27 @@ public class SpringConfig
     WebJarAssetLocator locator ()
     {
         return new WebJarAssetLocator ();
+    }
+    
+    /**
+     * weekday names bean.
+     * 
+     * return the list of date names
+     */
+    @Bean
+    @DependsOn ({"messageSource","locale"})
+    String[] dateNames ()
+    {
+        String [] dateNames = new String[7];
+        Locale locale = (Locale) context.getBean ("locale");
+        MessageSource msgSource = (MessageSource) context.getBean ("messageSource");
+        dateNames[0] = msgSource.getMessage ("sunday", null, locale);
+        dateNames[1] = msgSource.getMessage ("monday", null, locale);
+        dateNames[2] = msgSource.getMessage ("tuesday", null, locale);
+        dateNames[3] = msgSource.getMessage ("wednesday", null, locale);
+        dateNames[4] = msgSource.getMessage ("thursday", null, locale);
+        dateNames[5] = msgSource.getMessage ("friday", null, locale);
+        dateNames[6] = msgSource.getMessage ("saturday", null, locale);
+        return dateNames;
     }
 }
