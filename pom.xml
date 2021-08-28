@@ -57,7 +57,7 @@
         <jackson.version>2.13.0-rc1</jackson.version>
         <lombok.version>1.18.20</lombok.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
-        <pmd.version>6.37.0</pmd.version>
+        <pmd.version>6.38.0</pmd.version>
         <sb-contrib.version>7.4.7</sb-contrib.version>
         <slf4j.version>1.8.0-beta4</slf4j.version>
         <spring-boot.version>2.5.4</spring-boot.version>
@@ -115,7 +115,7 @@
             <!-- fixup javadoc generation -->
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-modules-java8</artifactId>
-            <version>2.13.0-rc1</version>
+            <version>2.13.0-rc2</version>
             <type>pom</type>
         </dependency>
         <dependency>
