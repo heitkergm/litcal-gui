@@ -303,13 +303,6 @@
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
                     <version>6.3.0</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.fasterxml.jackson.module</groupId>
-                            <artifactId>jackson-module-afterburner</artifactId>
-                            <version>${jackson.version}</version>
-                        </dependency>
-                    </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>
