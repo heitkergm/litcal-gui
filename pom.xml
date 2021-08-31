@@ -54,7 +54,7 @@
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <findsecbugs-plugin.version>1.11.0</findsecbugs-plugin.version>
         <fluido-skin.version>1.9</fluido-skin.version>
-        <jackson.version>2.13.0-rc1</jackson.version>
+        <jackson.version>2.13.0-rc2</jackson.version>
         <lombok.version>1.18.20</lombok.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
         <pmd.version>6.38.0</pmd.version>
@@ -115,7 +115,7 @@
             <!-- fixup javadoc generation -->
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-modules-java8</artifactId>
-            <version>2.13.0-rc2</version>
+            <version>${jackson.version}</version>
             <type>pom</type>
         </dependency>
         <dependency>
@@ -238,7 +238,7 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>8.45.1</version>
+                            <version>9.0</version>
                         </dependency>
                     </dependencies>
                     <configuration>
@@ -302,7 +302,14 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>6.2.2</version>
+                    <version>6.3.0</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>com.fasterxml.jackson.module</groupId>
+                            <artifactId>jackson-module-afterburner</artifactId>
+                            <version>${jackson.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>
