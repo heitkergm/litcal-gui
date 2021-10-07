@@ -50,14 +50,14 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
-        <classgraph.version>4.8.116</classgraph.version>
+        <classgraph.version>4.8.125</classgraph.version>
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <findsecbugs-plugin.version>1.11.0</findsecbugs-plugin.version>
         <fluido-skin.version>1.9</fluido-skin.version>
-        <jackson.version>2.13.0-rc2</jackson.version>
-        <lombok.version>1.18.20</lombok.version>
+        <jackson.version>2.13.0</jackson.version>
+        <lombok.version>1.18.22</lombok.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
-        <pmd.version>6.38.0</pmd.version>
+        <pmd.version>6.39.0</pmd.version>
         <sb-contrib.version>7.4.7</sb-contrib.version>
         <slf4j.version>1.8.0-beta4</slf4j.version>
         <spring-boot.version>2.5.5</spring-boot.version>
@@ -238,7 +238,7 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>9.0</version>
+                            <version>9.0.1</version>
                         </dependency>
                     </dependencies>
                     <configuration>
@@ -302,7 +302,7 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>6.3.1</version>
+                    <version>6.3.2</version>
                 </plugin>
             </plugins>
         </pluginManagement>
