@@ -50,7 +50,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
-        <classgraph.version>4.8.133</classgraph.version>
+        <classgraph.version>4.8.134</classgraph.version>
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <findsecbugs-plugin.version>1.11.0</findsecbugs-plugin.version>
         <fluido-skin.version>1.9</fluido-skin.version>
@@ -79,14 +79,11 @@
                 <artifactId>sb-contrib</artifactId>
                 <version>${sb-contrib.version}</version>
             </dependency>
-<!--
-            findsecbugs does not support the current JVM .class layout
             <dependency>
                 <groupId>com.h3xstream.findsecbugs</groupId>
                 <artifactId>findsecbugs-plugin</artifactId>
                 <version>${findsecbugs-plugin.version}</version>
             </dependency>
--->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -266,6 +263,9 @@
                         <excludeFilterFile>excludeFindbugs.xml</excludeFilterFile>
                         <includeTests>true</includeTests>
                         <plugins>
+                            <!-- findsecbugs causes spotbugs to display 
+                                 can't find MakeConcatWIthConstants, due to 
+                                 bad handling of INVOKEDYNAMIC JVM opcode -->
 <!--
                             <plugin>
                                 <groupId>com.h3xstream.findsecbugs</groupId>
