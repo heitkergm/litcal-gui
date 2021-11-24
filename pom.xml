@@ -537,6 +537,7 @@
                         <reports>
                             <report>index</report>
                             <report>issue-management</report>
+                            <report>dependency-management</report>
                             <report>dependencies</report>
                             <report>licenses</report>
                             <report>plugin-management</report>
