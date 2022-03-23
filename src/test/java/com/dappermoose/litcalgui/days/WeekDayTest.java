@@ -54,6 +54,26 @@ public class WeekDayTest
     }
 
     /**
+     * Test of calcDate method, with 2011/04/24.
+     */
+    @Test
+    public void testCalcDateWeekDaySun20110424 ()
+    {
+        System.out.println ("calcDate - 2011/04/24");
+        Assertions.assertEquals (0, WeekDay.calcWeekDate (2011, 4, 24));
+    }
+
+    /**
+     * Test of calcDate method, with 2012/04/09.
+     */
+    @Test
+    public void testCalcDateWeekDayFri20120409 ()
+    {
+        System.out.println ("calcDate - 2012/04/09");
+        Assertions.assertEquals (1, WeekDay.calcWeekDate (2012, 4, 9));
+    }
+
+    /**
      * Test of calcDate method, with 2016/08/12.
      */
     @Test

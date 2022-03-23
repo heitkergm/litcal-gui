@@ -63,7 +63,7 @@ public class MakeCalendar
                 message, "initial data entry",
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
-                MyIconImage.makeIcon ('\uf128'), options, null);
+                null, options, null);
 
         Integer year;
         if (action == JOptionPane.OK_OPTION)

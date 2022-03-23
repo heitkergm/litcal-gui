@@ -15,8 +15,6 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
 
-import org.webjars.WebJarAssetLocator;
-
 import lombok.extern.log4j.Log4j2;
 
 /**
@@ -95,17 +93,6 @@ public class SpringConfig
         return propsConfig;
     }
 
-    /**
-     * the locator bean.
-     * 
-     * @return the webjar asset locator saved in the bean
-     */
-    @Bean
-    WebJarAssetLocator locator ()
-    {
-        return new WebJarAssetLocator ();
-    }
-    
     /**
      * weekday names bean.
      * 

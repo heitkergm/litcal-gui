@@ -58,7 +58,7 @@ public final class ActionListeners
                 msgSource.getMessage ("quitTitle", null, myLocale),
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
-                MyIconImage.makeIcon ('\uf128'), options, options[0]);
+                null, options, options[0]);
 
         if (choice != JOptionPane.OK_OPTION)
         {
@@ -94,6 +94,6 @@ public final class ActionListeners
                 msgSource.getMessage ("aboutTitle", null, myLocale),
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.INFORMATION_MESSAGE,
-                MyIconImage.makeIcon ('\uf12a'), options, options[0]);
+                null, options, options[0]);
     }
 }
