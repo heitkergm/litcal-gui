@@ -59,7 +59,7 @@
         <pmd.version>6.43.0</pmd.version>
         <sb-contrib.version>7.4.7</sb-contrib.version>
         <slf4j.version>1.8.0-beta4</slf4j.version>
-        <spring-boot.version>2.6.4</spring-boot.version>
+        <spring-boot.version>2.6.5</spring-boot.version>
         <spring-framework.version>5.3.17</spring-framework.version>
         <versions-maven-plugin.version>2.10.0</versions-maven-plugin.version>
     </properties>
@@ -280,13 +280,19 @@
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
                     <version>7.0.1</version>
+                    <configuration>
+                        <dataDirectory>${user.dir}/../dependency-check-data</dataDirectory>
+                        <cveValidForHours>12</cveValidForHours>
+                        <suppressionFiles>dependency-suppressions.xml</suppressionFiles>
+                        <skipProvidedScope>true</skipProvidedScope>
+                        <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
+                        <nodeAnalyzerEnabled>false</nodeAnalyzerEnabled>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
 
         <plugins>
-             <!-- netbeans won't show versions:display-*-updates as runnable
-                  maven commands unless the plugin is in build -->
              <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
@@ -630,13 +636,6 @@
                         </reports>
                     </reportSet>
                 </reportSets>
-                <configuration>
-                    <cveValidForHours>24</cveValidForHours>
-                    <suppressionFiles>dependency-suppressions.xml</suppressionFiles>
-                    <skipProvidedScope>true</skipProvidedScope>
-                    <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
-                    <nodeAnalyzerEnabled>false</nodeAnalyzerEnabled>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
