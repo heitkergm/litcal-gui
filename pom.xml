@@ -54,7 +54,6 @@
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <findsecbugs-plugin.version>1.11.0</findsecbugs-plugin.version>
         <fluido-skin.version>1.10.0</fluido-skin.version>
-        <jackson.version>2.13.2</jackson.version>
         <lombok.version>1.18.22</lombok.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
         <pmd.version>6.43.0</pmd.version>
@@ -108,13 +107,6 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <!-- fixup javadoc generation -->
-            <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-modules-java8</artifactId>
-            <version>${jackson.version}</version>
-            <type>pom</type>
-        </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j18-impl</artifactId>
@@ -287,7 +279,7 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>7.0.0</version>
+                    <version>7.0.1</version>
                 </plugin>
             </plugins>
         </pluginManagement>
