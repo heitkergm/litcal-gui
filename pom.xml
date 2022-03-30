@@ -256,7 +256,7 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>7.0.1</version>
+                    <version>7.0.4</version>
                     <configuration>
                         <dataDirectory>${user.dir}/../dependency-check-data</dataDirectory>
                         <cveValidForHours>12</cveValidForHours>
@@ -385,7 +385,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
