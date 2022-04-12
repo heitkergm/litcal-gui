@@ -41,6 +41,13 @@ public final class ActionListeners
     private Locale myLocale;
 
     /**
+     * default constructor.
+     */
+    public ActionListeners ()
+    {
+    }
+
+    /**
      * action method for "shutdown".
      */
     void shutdownApp ()

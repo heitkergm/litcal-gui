@@ -15,7 +15,14 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public final class SetupScrollPane
-{   
+{
+    /**
+     * default constructor.
+     */
+    public SetupScrollPane ()
+    {
+    }
+
     /**
      * set up the scroll pane which shows the results.
      * 

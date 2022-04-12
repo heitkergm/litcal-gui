@@ -36,7 +36,14 @@ public final class MakeMenuBar
     private MessageSource messageSource;
     
     @Inject
-    private Locale myLocale;          
+    private Locale myLocale;
+
+    /**
+     * default constructor.
+     */
+    public MakeMenuBar ()
+    {
+    }
             
     /**
      * creates the menubar object used in the program.

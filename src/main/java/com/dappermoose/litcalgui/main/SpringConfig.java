@@ -27,6 +27,13 @@ public class SpringConfig
 {
     @Inject
     private ApplicationContext context;
+
+    /**
+     * default constructor.
+     */
+    public SpringConfig ()
+    {
+    }
     
     /**
      * Message source.

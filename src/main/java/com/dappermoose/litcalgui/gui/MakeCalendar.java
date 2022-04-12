@@ -40,6 +40,13 @@ public class MakeCalendar
     private String [] dateNames;
 
     /**
+     * default constructor.
+     */
+    public MakeCalendar ()
+    {
+    }
+
+    /**
      * action method for "make calendar".
      */
     void makeCalendar ()
