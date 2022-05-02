@@ -54,7 +54,7 @@
         <findsecbugs-plugin.version>1.12.0</findsecbugs-plugin.version>
         <fluido-skin.version>1.10.0</fluido-skin.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
-        <pmd.version>6.44.0</pmd.version>
+        <pmd.version>6.45.0</pmd.version>
         <sb-contrib.version>7.4.7</sb-contrib.version>
         <slf4j.version>1.8.0-beta4</slf4j.version>
         <spring-boot.version>2.6.7</spring-boot.version>
@@ -145,7 +145,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>3.2.2</version>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -202,7 +202,7 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>10.1</version>
+                            <version>10.2</version>
                         </dependency>
                     </dependencies>
                     <configuration>
@@ -259,7 +259,7 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>7.0.4</version>
+                    <version>7.1.0</version>
                     <configuration>
                         <dataDirectory>${user.dir}/../dependency-check-data</dataDirectory>
                         <cveValidForHours>12</cveValidForHours>
@@ -316,12 +316,12 @@
                     <dependency>
                         <groupId>org.codehaus.plexus</groupId>
                         <artifactId>plexus-compiler-javac</artifactId>
-                        <version>2.11.1</version>
+                        <version>2.12.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.codehaus.plexus</groupId>
                         <artifactId>plexus-compiler-api</artifactId>
-                        <version>2.11.1</version>
+                        <version>2.12.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -343,7 +343,7 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>3.8.4</version>
+                                    <version>3.8.5</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
                                     <version>${java.version}</version>
@@ -485,7 +485,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.12.0</version>
+                <version>4.0.0-M1</version>
             </plugin>
         </plugins>
     </build>
