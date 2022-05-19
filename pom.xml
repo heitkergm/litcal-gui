@@ -52,11 +52,11 @@
         <java.version>17</java.version>
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <findsecbugs-plugin.version>1.12.0</findsecbugs-plugin.version>
-        <fluido-skin.version>1.10.0</fluido-skin.version>
+        <fluido-skin.version>1.11.0</fluido-skin.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
         <pmd.version>6.45.0</pmd.version>
         <sb-contrib.version>7.4.7</sb-contrib.version>
-        <spring-boot.version>2.6.7</spring-boot.version>
+        <spring-boot.version>2.6.8</spring-boot.version>
         <spring-framework.version>5.3.20</spring-framework.version>
         <versions-maven-plugin.version>2.10.0</versions-maven-plugin.version>
     </properties>
@@ -479,7 +479,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.12.0</version>
+                <version>4.0.0-M1</version>
             </plugin>
         </plugins>
     </build>
