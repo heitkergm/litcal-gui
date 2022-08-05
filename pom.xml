@@ -54,7 +54,7 @@
         <findsecbugs-plugin.version>1.12.0</findsecbugs-plugin.version>
         <fluido-skin.version>1.11.1</fluido-skin.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
-        <pmd.version>6.47.0</pmd.version>
+        <pmd.version>6.48.0</pmd.version>
         <sb-contrib.version>7.4.7</sb-contrib.version>
         <spring-boot.version>2.7.2</spring-boot.version>
         <spring-framework.version>5.3.22</spring-framework.version>
@@ -115,7 +115,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.9.0-RC1</version>
+            <version>5.9.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -151,7 +151,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.4.1</version>
+                    <version>3.4.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -188,7 +188,7 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>10.3.1</version>
+                            <version>10.3.2</version>
                         </dependency>
                     </dependencies>
                     <configuration>
@@ -211,7 +211,7 @@
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>4.7.1.0</version>
+                    <version>4.7.1.1</version>
                     <configuration>
                         <excludeFilterFile>excludeFindbugs.xml</excludeFilterFile>
                         <includeTests>true</includeTests>
@@ -362,7 +362,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.0.1</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -450,7 +450,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.3.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -476,7 +476,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>4.0.0-M2</version>
+                <version>4.0.0-M3</version>
             </plugin>
         </plugins>
     </build>
