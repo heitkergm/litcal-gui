@@ -7,7 +7,8 @@ import java.awt.event.WindowEvent;
 import java.net.URL;
 import java.util.Locale;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;

@@ -2,7 +2,8 @@ package com.dappermoose.litcalgui.gui;
 
 import java.util.Locale;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 

@@ -6,7 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.Locale;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
+
 import javax.swing.Box;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
