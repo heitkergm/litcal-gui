@@ -57,8 +57,8 @@
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
         <pmd.version>6.51.0</pmd.version>
         <sb-contrib.version>7.4.7</sb-contrib.version>
-        <spring-boot.version>2.7.6</spring-boot.version>
-        <spring-framework.version>5.3.24</spring-framework.version>
+        <spring-boot.version>3.0.0</spring-boot.version>
+        <spring-framework.version>6.0.2</spring-framework.version>
     </properties>
 
     <dependencyManagement>
@@ -411,6 +411,7 @@
                                         <exclude>META-INF/LICENSE.md</exclude>
                                         <exclude>META-INF/NOTICE.md</exclude>
                                         <exclude>META-INF/versions/11/module-info.class</exclude>
+                                        <exclude>META-INF/spring/aot.factories</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
