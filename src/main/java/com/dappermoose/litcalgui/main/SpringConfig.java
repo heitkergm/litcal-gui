@@ -79,7 +79,7 @@ public class SpringConfig
             localeName = Locale.getDefault ().getDisplayName ();
         }
         
-        Locale myLocale = new Locale (localeName);
+        Locale myLocale = Locale.of (localeName);
         LOG.debug ("locale bean is " + myLocale);
         
         return myLocale;
