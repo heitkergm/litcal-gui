@@ -35,7 +35,7 @@ public class SpringConfig
     public SpringConfig ()
     {
     }
-    
+
     /**
      * Message source.
      *
@@ -50,7 +50,7 @@ public class SpringConfig
         source.setBasenames ("classpath:messages");
         return source;
     }
-    
+
     /**
      * frame bean.
      *
@@ -61,39 +61,39 @@ public class SpringConfig
     {
         return new JFrame ();
     }
-    
+
     /**
      * the locale bean.
-     * 
+     *
      * @return the locale object in the bean
      */
     @Bean
     Locale locale ()
     {
         // get the locale and save it off as a bean
-        LOG.debug ("context is " + context);
+        log.debug ("context is " + context);
         String localeName = context.getEnvironment ().getProperty ("locale");
-        LOG.debug ("locale is " + localeName);
+        log.debug ("locale is " + localeName);
         if (localeName == null)
         {
             localeName = Locale.getDefault ().getDisplayName ();
         }
-        
+
         Locale myLocale = Locale.of (localeName);
-        LOG.debug ("locale bean is " + myLocale);
-        
+        log.debug ("locale bean is " + myLocale);
+
         return myLocale;
     }
 
     /**
      * Add the entries from git.properties into Spring environment.
-     * 
+     *
      * @return propsConfig - the new property sources placeholder configurer.
      */
     @Bean
     public static PropertySourcesPlaceholderConfigurer placeholderConfigurer ()
     {
-        PropertySourcesPlaceholderConfigurer propsConfig = 
+        PropertySourcesPlaceholderConfigurer propsConfig =
             new PropertySourcesPlaceholderConfigurer ();
         propsConfig.setLocation (new ClassPathResource ("git.properties"));
         propsConfig.setIgnoreResourceNotFound (true);
@@ -103,7 +103,7 @@ public class SpringConfig
 
     /**
      * weekday names bean.
-     * 
+     *
      * @return the list of date names
      */
     @Bean

@@ -28,22 +28,22 @@ public final class Main
      */
     public static void main (final String[] args)
     {
-        LOG.debug ("starting main litcal gui program");
+        log.debug ("starting main litcal gui program");
         SimpleCommandLinePropertySource ps;
         ps = new SimpleCommandLinePropertySource (args);
         String [] pnames = ps.getPropertyNames ();
         for (String pname : pnames)
         {
-            LOG.debug ("property name: " + pname + ": " + ps.getProperty (pname));
+            log.debug ("property name: " + pname + ": " + ps.getProperty (pname));
         }
-        
+
         AnnotationConfigApplicationContext context =
             new AnnotationConfigApplicationContext ();
         context.getEnvironment ().getPropertySources ().addFirst (ps);
-               
+
         // make sure our context shuts down when JVM wants to
         context.registerShutdownHook ();
-        
+
         // now run SpringConfig and inject the locale bean
         context.register (SpringConfig.class);
         context.refresh ();
@@ -53,5 +53,6 @@ public final class Main
 
         // mark the gui class for swing startup
         SwingUtilities.invokeLater (gui);
+        context.close ();
     }
 }

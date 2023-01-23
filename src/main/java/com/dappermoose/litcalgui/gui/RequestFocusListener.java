@@ -43,7 +43,7 @@ class RequestFocusListener implements AncestorListener
     @Override
     public void ancestorAdded (final AncestorEvent e)
     {
-        LOG.debug ("ancestor added, remove is " + Boolean.toString (remove));
+        log.debug ("ancestor added, remove is " + Boolean.toString (remove));
 
         JComponent component = e.getComponent ();
         component.requestFocusInWindow ();

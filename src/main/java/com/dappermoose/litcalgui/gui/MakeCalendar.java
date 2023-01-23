@@ -21,7 +21,7 @@ import lombok.extern.log4j.Log4j2;
 
 /**
  * the guts of the calendar-making process.
- * 
+ *
  * @author matt
  */
 @Component
@@ -32,11 +32,11 @@ public class MakeCalendar
     private MessageSource msgSource;
 
     @Inject
-    private Locale myLocale;          
+    private Locale myLocale;
 
     @Inject
     private JFrame frame;
-    
+
     @Inject
     private String [] dateNames;
 
@@ -52,17 +52,17 @@ public class MakeCalendar
      */
     void makeCalendar ()
     {
-        LOG.debug ("entered makeCalendar()");
-        
+        log.debug ("entered makeCalendar()");
+
         String[] options = new String[]
         {
             msgSource.getMessage ("yesLabel", null, myLocale),
             msgSource.getMessage ("noLabel", null, myLocale)
         };
-        
+
         JSpinner yearInput = new JSpinner (new SpinnerNumberModel (2020, 2000, 2050, 1));
         yearInput.setEditor (new NumberEditor (yearInput, "####"));
-        
+
         yearInput.addAncestorListener (new RequestFocusListener ());
         Object[] message = { "enter the year, you rascal", yearInput };
 
@@ -76,25 +76,25 @@ public class MakeCalendar
         Integer year;
         if (action == JOptionPane.OK_OPTION)
         {
-            LOG.debug ("entry made");
+            log.debug ("entry made");
             year = (Integer) yearInput.getValue ();
             if (year != null)
             {
-                LOG.debug ("year is not null " + year);
+                log.debug ("year is not null " + year);
             }
             else
             {
-                LOG.debug ("year is null");
+                log.debug ("year is null");
                 return;
             }
         }
         else
         {
-            LOG.debug ("canceled");
+            log.debug ("canceled");
             return;
         }
 
-        LOG.debug ("Liturgical year is " + year);
+        log.debug ("Liturgical year is " + year);
         int easterDay = EasterDay.calcEaster (year);
         String month = "March";
         if (easterDay > 31)
@@ -102,11 +102,11 @@ public class MakeCalendar
             easterDay -= 31;
             month = "April";
         }
-        LOG.debug ("Easter is " + month + " " + easterDay);
-        LOG.debug (year + " is " + (!LeapYear.isLeapYear (year) ? "not " : "") +
+        log.debug ("Easter is " + month + " " + easterDay);
+        log.debug (year + " is " + (!LeapYear.isLeapYear (year) ? "not " : "") +
                 "a leap year");
-        
+
         int jan1date = WeekDay.calcWeekDate (year, 1, 1);
-        LOG.debug ("January 1st is a " + dateNames[jan1date]);
+        log.debug ("January 1st is a " + dateNames[jan1date]);
     }
 }

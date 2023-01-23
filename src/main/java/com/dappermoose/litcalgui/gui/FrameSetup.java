@@ -68,7 +68,7 @@ public final class FrameSetup
         catch (ClassNotFoundException | InstantiationException
                 | IllegalAccessException | UnsupportedLookAndFeelException ex)
         {
-            LOG.fatal ("UIManager look and feel error", ex);
+            log.fatal ("UIManager look and feel error", ex);
             frame.dispose ();
         }
 
@@ -102,7 +102,7 @@ public final class FrameSetup
             @Override
             public void windowClosing (final WindowEvent e)
             {
-                LOG.debug ("Clicked on exit");
+                log.debug ("Clicked on exit");
                 al.shutdownApp ();
             }
         });
@@ -111,7 +111,7 @@ public final class FrameSetup
         frame.getContentPane ().add (scrollPane);
 
         URL imgURL = FrameSetup.class.getResource ("/favicon.png");
-        LOG.debug ("imgURL is " + (imgURL == null ? "not " : "") + "available");
+        log.debug ("imgURL is " + (imgURL == null ? "not " : "") + "available");
         if (imgURL != null)
         {
             ImageIcon icon = new ImageIcon (imgURL);

@@ -53,7 +53,7 @@ public final class ActionListeners
      */
     void shutdownApp ()
     {
-        LOG.debug ("entered shutdownApp ()");
+        log.debug ("entered shutdownApp ()");
         String[] options = new String[]
         {
             msgSource.getMessage ("yesLabel", null, myLocale),
@@ -70,11 +70,11 @@ public final class ActionListeners
 
         if (choice != JOptionPane.OK_OPTION)
         {
-            LOG.debug ("canceled");
+            log.debug ("canceled");
             return;
         }
 
-        LOG.debug ("bye-bye");
+        log.debug ("bye-bye");
 
         frame.setVisible (false);
         frame.dispose ();
@@ -90,7 +90,7 @@ public final class ActionListeners
             msgSource.getMessage ("okLabel", null, myLocale)
         };
 
-        // icon is font-awesome exclamation        
+        // icon is font-awesome exclamation
         JOptionPane.showOptionDialog (frame,
                 msgSource.getMessage ("litcalGui",
                         new Object[]

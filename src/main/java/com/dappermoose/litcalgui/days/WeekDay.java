@@ -40,20 +40,20 @@ public final class WeekDay
         {
             m -= 2;
         }
-        LOG.debug ("WeekDay.m " + m);
+        log.debug ("WeekDay.m " + m);
         int c = y / 100;
-        LOG.debug ("WeekDay.c " + c);
+        log.debug ("WeekDay.c " + c);
         int a = y % 100;
-        LOG.debug ("WeekDay.a " + a);
+        log.debug ("WeekDay.a " + a);
         int b = (13 * m - 1) / 5 + a / 4 + c / 4;
-        LOG.debug ("WeekDay.b" + b);
+        log.debug ("WeekDay.b" + b);
 
         retVal = (b + a + day - (2 * c)) % 7;
         if (retVal < 0)
         {
             retVal += 7;
         }
-        LOG.debug ("WeekDay.retVal " + retVal);
+        log.debug ("WeekDay.retVal " + retVal);
 
         return retVal;
     }

@@ -29,13 +29,13 @@ public final class MakeMenuBar
 {
     @Inject
     private ActionListeners al;
-    
+
     @Inject
     private MakeCalendar mc;
 
     @Inject
     private MessageSource messageSource;
-    
+
     @Inject
     private Locale myLocale;
 
@@ -45,11 +45,11 @@ public final class MakeMenuBar
     public MakeMenuBar ()
     {
     }
-            
+
     /**
      * creates the menubar object used in the program.
-     * 
-     * @return the menu bar object 
+     *
+     * @return the menu bar object
      */
     JMenuBar makeMenuBar ()
     {
@@ -66,7 +66,7 @@ public final class MakeMenuBar
             @Override
             public void actionPerformed (final ActionEvent e)
             {
-                LOG.debug ("Chose File->Exit");
+                log.debug ("Chose File->Exit");
                 al.shutdownApp ();
             }
         });
@@ -86,7 +86,7 @@ public final class MakeMenuBar
             @Override
             public void actionPerformed (final ActionEvent e)
             {
-                LOG.debug ("Chose Calendar->Make");
+                log.debug ("Chose Calendar->Make");
                 mc.makeCalendar ();
             }
         });
@@ -107,13 +107,13 @@ public final class MakeMenuBar
             @Override
             public void actionPerformed (final ActionEvent e)
             {
-                LOG.debug ("Chose Help->About");
+                log.debug ("Chose Help->About");
                 al.showAbout ();
             }
         });
         helpMenu.add (aboutItem);
         menuBar.add (helpMenu);
-        
+
         return menuBar;
     }
 }

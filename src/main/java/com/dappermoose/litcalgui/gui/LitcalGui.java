@@ -20,13 +20,13 @@ public class LitcalGui implements Runnable
 
     @Inject
     private JFrame frame;
-    
+
     @Inject
     private FrameSetup frameSetup;
-    
+
     @Inject
     private Locale myLocale;
-    
+
     /**
      * LitcalGui constructor.
      */
@@ -45,10 +45,10 @@ public class LitcalGui implements Runnable
 
     private void initGui ()
     {
-        LOG.debug ("in initGui, locale is " + myLocale);
-               
+        log.debug ("in initGui, locale is " + myLocale);
+
         frameSetup.setupFrame ();
-        
+
         //Display the window.
         frame.pack ();
         frame.setVisible (true);
