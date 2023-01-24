@@ -55,7 +55,7 @@
         <fluido-skin.version>2.0.0-M2</fluido-skin.version>
         <log4j.version>2.19.0</log4j.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
-        <pmd.version>6.53.0</pmd.version>
+        <pmd.version>6.54.0</pmd.version>
         <sb-contrib.version>7.4.7</sb-contrib.version>
         <spring-boot.version>3.0.2</spring-boot.version>
         <spring-framework.version>6.0.4</spring-framework.version>
@@ -110,7 +110,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
+            <version>1.18.26</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -199,7 +199,7 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>10.6.0</version>
+                            <version>10.7.0</version>
                         </dependency>
                     </dependencies>
                     <configuration>
@@ -256,7 +256,7 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>8.0.1</version>
+                    <version>8.0.2</version>
                     <configuration>
                         <dataDirectory>${user.dir}/../dependency-check-data</dataDirectory>
                         <cveValidForHours>12</cveValidForHours>
@@ -332,9 +332,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.1</version>
                 <executions>
                     <execution>
+                        <?m2e ignore?>
                         <id>enforce-maven</id>
                         <goals>
                             <goal>enforce</goal>

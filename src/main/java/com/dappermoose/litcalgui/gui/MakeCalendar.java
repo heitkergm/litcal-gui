@@ -17,7 +17,7 @@ import com.dappermoose.litcalgui.days.EasterDay;
 import com.dappermoose.litcalgui.days.LeapYear;
 import com.dappermoose.litcalgui.days.WeekDay;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * the guts of the calendar-making process.
@@ -25,7 +25,7 @@ import lombok.extern.log4j.Log4j2;
  * @author matt
  */
 @Component
-@Log4j2
+@Slf4j
 public class MakeCalendar
 {
     @Inject

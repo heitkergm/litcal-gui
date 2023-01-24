@@ -4,7 +4,7 @@ import javax.swing.JComponent;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * RequestFocusListener puts the focus on the field to which it's attached.
@@ -13,7 +13,7 @@ import lombok.extern.log4j.Log4j2;
  *
  * @author matt
  */
-@Log4j2
+@Slf4j
 class RequestFocusListener implements AncestorListener
 {
 

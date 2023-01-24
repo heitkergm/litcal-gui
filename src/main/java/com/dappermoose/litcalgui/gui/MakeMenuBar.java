@@ -16,7 +16,7 @@ import javax.swing.JMenuItem;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * make the menu bar.
@@ -24,7 +24,7 @@ import lombok.extern.log4j.Log4j2;
  * @author matt
  */
 @Component
-@Log4j2
+@Slf4j
 public final class MakeMenuBar
 {
     @Inject

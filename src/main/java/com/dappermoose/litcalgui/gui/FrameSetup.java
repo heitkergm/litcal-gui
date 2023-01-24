@@ -21,14 +21,14 @@ import javax.swing.WindowConstants;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * initial frame setup.
  *
  * @author matt
  */
-@Log4j2
+@Slf4j
 @Component
 public final class FrameSetup
 {
@@ -68,7 +68,7 @@ public final class FrameSetup
         catch (ClassNotFoundException | InstantiationException
                 | IllegalAccessException | UnsupportedLookAndFeelException ex)
         {
-            log.fatal ("UIManager look and feel error", ex);
+            log.error ("UIManager look and feel error", ex);
             frame.dispose ();
         }
 
