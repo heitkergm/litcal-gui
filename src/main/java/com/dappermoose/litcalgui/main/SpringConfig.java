@@ -71,8 +71,10 @@ public class SpringConfig
     Locale locale ()
     {
         // get the locale and save it off as a bean
+        // deepcode ignore LogLevelCheck:
         log.debug ("context is " + context);
         String localeName = context.getEnvironment ().getProperty ("locale");
+        // deepcode ignore LogLevelCheck:
         log.debug ("locale is " + localeName);
         if (localeName == null)
         {
@@ -80,7 +82,8 @@ public class SpringConfig
         }
 
         Locale myLocale = Locale.of (localeName);
-        log.debug ("locale bean is " + myLocale);
+         // deepcode ignore LogLevelCheck:
+         log.debug ("locale bean is " + myLocale);
 
         return myLocale;
     }

@@ -43,6 +43,7 @@ class RequestFocusListener implements AncestorListener
     @Override
     public void ancestorAdded (final AncestorEvent e)
     {
+        // deepcode ignore LogLevelCheck:
         log.debug ("ancestor added, remove is " + Boolean.toString (remove));
 
         JComponent component = e.getComponent ();

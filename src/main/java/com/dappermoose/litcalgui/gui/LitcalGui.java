@@ -45,6 +45,7 @@ public class LitcalGui implements Runnable
 
     private void initGui ()
     {
+        // deepcode ignore LogLevelCheck:
         log.debug ("in initGui, locale is " + myLocale);
 
         frameSetup.setupFrame ();

@@ -53,12 +53,12 @@
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <findsecbugs-plugin.version>1.12.0</findsecbugs-plugin.version>
         <fluido-skin.version>2.0.0-M3</fluido-skin.version>
-        <log4j.version>2.19.0</log4j.version>
+        <log4j.version>2.20.0</log4j.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
-        <pmd.version>6.54.0</pmd.version>
+        <pmd.version>6.55.0</pmd.version>
         <sb-contrib.version>7.4.7</sb-contrib.version>
-        <spring-boot.version>3.0.2</spring-boot.version>
-        <spring-framework.version>6.0.5</spring-framework.version>
+        <spring-boot.version>3.0.3</spring-boot.version>
+        <spring-framework.version>6.0.6</spring-framework.version>
     </properties>
 
     <dependencyManagement>
@@ -121,7 +121,7 @@
         <dependency>
             <groupId>jakarta.inject</groupId>
             <artifactId>jakarta.inject-api</artifactId>
-            <version>2.0.1</version>
+            <version>2.0.1.MR</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -162,7 +162,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.4.2</version>
+                    <version>3.5.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -199,7 +199,7 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>10.7.0</version>
+                            <version>10.8.0</version>
                         </dependency>
                     </dependencies>
                     <configuration>
@@ -222,22 +222,16 @@
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>4.7.3.0</version>
+                    <version>4.7.3.2</version>
                     <configuration>
                         <excludeFilterFile>excludeFindbugs.xml</excludeFilterFile>
                         <includeTests>true</includeTests>
-                        <jvmArgs>-Djava.security.manager=allow</jvmArgs>
                         <plugins>
-                            <!-- findsecbugs causes spotbugs to display
-                                 can't find MakeConcatWIthConstants, due to
-                                 bad handling of INVOKEDYNAMIC JVM opcode -->
-<!--
                             <plugin>
                                 <groupId>com.h3xstream.findsecbugs</groupId>
                                 <artifactId>findsecbugs-plugin</artifactId>
                                 <version>${findsecbugs-plugin.version}</version>
                             </plugin>
--->
                             <plugin>
                                 <groupId>com.mebigfatguy.sb-contrib</groupId>
                                 <artifactId>sb-contrib</artifactId>
@@ -256,7 +250,7 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>8.1.0</version>
+                    <version>8.1.2</version>
                     <configuration>
                         <dataDirectory>${user.dir}/../dependency-check-data</dataDirectory>
                         <cveValidForHours>12</cveValidForHours>
@@ -273,7 +267,7 @@
              <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>2.14.2</version>
+                <version>2.15.0</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -303,7 +297,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>3.11.0</version>
                 <configuration>
                     <release>${java.version}</release>
                     <showDeprecation>true</showDeprecation>

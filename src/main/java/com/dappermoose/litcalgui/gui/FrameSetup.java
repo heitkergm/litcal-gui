@@ -111,6 +111,7 @@ public final class FrameSetup
         frame.getContentPane ().add (scrollPane);
 
         URL imgURL = FrameSetup.class.getResource ("/favicon.png");
+        // deepcode ignore LogLevelCheck:
         log.debug ("imgURL is " + (imgURL == null ? "not " : "") + "available");
         if (imgURL != null)
         {

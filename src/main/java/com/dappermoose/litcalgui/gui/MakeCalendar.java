@@ -80,6 +80,7 @@ public class MakeCalendar
             year = (Integer) yearInput.getValue ();
             if (year != null)
             {
+                // deepcode ignore LogLevelCheck:
                 log.debug ("year is not null " + year);
             }
             else
@@ -94,6 +95,7 @@ public class MakeCalendar
             return;
         }
 
+        // deepcode ignore LogLevelCheck:
         log.debug ("Liturgical year is " + year);
         int easterDay = EasterDay.calcEaster (year);
         String month = "March";
@@ -102,11 +104,14 @@ public class MakeCalendar
             easterDay -= 31;
             month = "April";
         }
+        // deepcode ignore LogLevelCheck:
         log.debug ("Easter is " + month + " " + easterDay);
+        // deepcode ignore LogLevelCheck:
         log.debug (year + " is " + (!LeapYear.isLeapYear (year) ? "not " : "") +
                 "a leap year");
 
         int jan1date = WeekDay.calcWeekDate (year, 1, 1);
+        // deepcode ignore LogLevelCheck:
         log.debug ("January 1st is a " + dateNames[jan1date]);
     }
 }
