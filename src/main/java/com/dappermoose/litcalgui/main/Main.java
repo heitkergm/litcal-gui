@@ -34,8 +34,8 @@ public final class Main
         String [] pnames = ps.getPropertyNames ();
         for (String pname : pnames)
         {
-        // deepcode ignore LogLevelCheck:
-        log.debug ("property name: " + pname + ": " + ps.getProperty (pname));
+            // deepcode ignore LogLevelCheck:
+            log.debug ("property name: " + pname + ": " + ps.getProperty (pname));
         }
 
         AnnotationConfigApplicationContext context =

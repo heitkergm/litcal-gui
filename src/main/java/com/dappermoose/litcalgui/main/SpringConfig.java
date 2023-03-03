@@ -82,8 +82,8 @@ public class SpringConfig
         }
 
         Locale myLocale = Locale.of (localeName);
-         // deepcode ignore LogLevelCheck:
-         log.debug ("locale bean is " + myLocale);
+        // deepcode ignore LogLevelCheck:
+        log.debug ("locale bean is " + myLocale);
 
         return myLocale;
     }
