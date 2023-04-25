@@ -52,13 +52,13 @@
         <java.version>20</java.version>
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <findsecbugs-plugin.version>1.12.0</findsecbugs-plugin.version>
-        <fluido-skin.version>2.0.0-M5</fluido-skin.version>
+        <fluido-skin.version>2.0.0-M6</fluido-skin.version>
         <log4j.version>2.20.0</log4j.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
         <pmd.version>6.55.0</pmd.version>
         <sb-contrib.version>7.6.0</sb-contrib.version>
-        <spring-boot.version>3.0.6</spring-boot.version>
-        <spring-framework.version>6.0.8</spring-framework.version>
+        <spring-boot.version>3.1.0</spring-boot.version>
+        <spring-framework.version>6.0.9</spring-framework.version>
     </properties>
 
     <dependencyManagement>
@@ -126,7 +126,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.9.2</version>
+            <version>5.10.0-M1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -142,7 +142,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.1.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -162,7 +162,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <version>3.6.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -177,7 +177,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-pmd-plugin</artifactId>
-                    <version>3.20.0</version>
+                    <version>3.21.0</version>
                     <dependencies>
                         <dependency>
                             <groupId>net.sourceforge.pmd</groupId>
@@ -199,7 +199,7 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>10.9.3</version>
+                            <version>10.11.0</version>
                         </dependency>
                     </dependencies>
                     <configuration>
@@ -277,7 +277,7 @@
             <plugin>
                 <groupId>io.github.git-commit-id</groupId>
                 <artifactId>git-commit-id-maven-plugin</artifactId>
-                <version>5.0.0</version>
+                <version>6.0.0</version>
                 <executions>
                     <execution>
                         <goals><goal>revision</goal></goals>
@@ -337,7 +337,7 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>3.9.1</version>
+                                    <version>3.9.2</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
                                     <version>${java.version}</version>
@@ -459,7 +459,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.1.0</version>
                 <configuration>
                     <argLine>${argLine} -Dfile.encoding=${project.build.sourceEncoding}</argLine>
                 </configuration>
@@ -467,7 +467,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.9</version>
+                <version>0.8.10</version>
                 <executions>
                     <execution>
                         <id>pre-unit-test</id>
@@ -480,7 +480,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>4.0.0-M7</version>
+                <version>4.0.0-M8</version>
             </plugin>
         </plugins>
     </build>
