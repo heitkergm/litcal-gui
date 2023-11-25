@@ -255,10 +255,11 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>8.4.3</version>
+                    <version>9.0.1</version>
                     <configuration>
                         <dataDirectory>${user.dir}/../dependency-check-data</dataDirectory>
-                        <cveValidForHours>12</cveValidForHours>
+                        <nvdApiKey>${env.NVD_KEY}</nvdApiKey>
+                        <nvdValidForHours>12</nvdValidForHours>
                         <suppressionFiles>dependency-suppressions.xml</suppressionFiles>
                         <skipProvidedScope>true</skipProvidedScope>
                         <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
@@ -485,7 +486,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>4.0.0-M11</version>
+                <version>4.0.0-M12</version>
             </plugin>
         </plugins>
     </build>
