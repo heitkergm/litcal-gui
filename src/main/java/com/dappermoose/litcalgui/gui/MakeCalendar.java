@@ -11,6 +11,7 @@ import javax.swing.JSpinner.NumberEditor;
 import javax.swing.SpinnerNumberModel;
 
 import org.springframework.context.MessageSource;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
 import com.dappermoose.litcalgui.days.EasterDay;
@@ -32,6 +33,7 @@ public class MakeCalendar
     private MessageSource msgSource;
 
     @Inject
+    @NonNull
     private Locale myLocale;
 
     @Inject

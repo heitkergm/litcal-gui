@@ -14,6 +14,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import org.springframework.context.MessageSource;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +38,7 @@ public final class MakeMenuBar
     private MessageSource messageSource;
 
     @Inject
+    @NonNull
     private Locale myLocale;
 
     /**

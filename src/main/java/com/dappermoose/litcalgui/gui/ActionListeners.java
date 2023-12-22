@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +40,7 @@ public final class ActionListeners
     private String gitCommitId;
 
     @Inject
+    @NonNull
     private Locale myLocale;
 
     /**

@@ -4,6 +4,7 @@ import javax.swing.SwingUtilities;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.env.SimpleCommandLinePropertySource;
+import org.springframework.lang.NonNull;
 
 import com.dappermoose.litcalgui.gui.LitcalGui;
 
@@ -26,7 +27,7 @@ public final class Main
      *
      * @param args the command line arguments
      */
-    public static void main (final String[] args)
+    public static void main (final @NonNull String[] args)
     {
         log.debug ("starting main litcal gui program");
         SimpleCommandLinePropertySource ps;
@@ -34,8 +35,11 @@ public final class Main
         String [] pnames = ps.getPropertyNames ();
         for (String pname : pnames)
         {
-            // deepcode ignore LogLevelCheck:
-            log.debug ("property name: " + pname + ": " + ps.getProperty (pname));
+            if (pname != null)
+            {
+                // deepcode ignore LogLevelCheck:
+                log.debug ("property name: " + pname + ": " + ps.getProperty (pname));
+            }
         }
 
         AnnotationConfigApplicationContext context =

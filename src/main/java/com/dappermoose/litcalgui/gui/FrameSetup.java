@@ -19,6 +19,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
 import org.springframework.context.MessageSource;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +49,7 @@ public final class FrameSetup
     private MakeMenuBar mmb;
 
     @Inject
+    @NonNull
     private Locale myLocale;
 
     private FrameSetup ()
