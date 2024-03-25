@@ -49,13 +49,13 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>21</java.version>
+        <java.version>22</java.version>
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <findsecbugs-plugin.version>1.13.0</findsecbugs-plugin.version>
         <fluido-skin.version>2.0.0-M8</fluido-skin.version>
         <log4j2.version>2.23.1</log4j2.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
-        <pmd.version>6.55.0</pmd.version>
+        <pmd.version>7.0.0</pmd.version>
         <sb-contrib.version>7.6.4</sb-contrib.version>
         <spring-boot.version>3.2.4</spring-boot.version>
         <spring-framework.version>6.1.5</spring-framework.version>
@@ -181,7 +181,7 @@
                     <dependencies>
                         <dependency>
                             <groupId>net.sourceforge.pmd</groupId>
-                            <artifactId>pmd-java</artifactId>
+                            <artifactId>pmd-compat6</artifactId>
                             <version>${pmd.version}</version>
                         </dependency>
                         <dependency>
@@ -190,9 +190,19 @@
                             <version>${pmd.version}</version>
                         </dependency>
                         <dependency>
-                            <groupId>org.ow2.asm</groupId>
-                            <artifactId>asm</artifactId>
-                            <version>9.6</version>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-java</artifactId>
+                            <version>${pmd.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-javascript</artifactId>
+                            <version>${pmd.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-jsp</artifactId>
+                            <version>${pmd.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>
