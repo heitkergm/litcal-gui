@@ -55,10 +55,10 @@
         <fluido-skin.version>2.0.0-M9</fluido-skin.version>
         <log4j2.version>2.23.1</log4j2.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
-        <pmd.version>7.2.0</pmd.version>
+        <pmd.version>7.3.0</pmd.version>
         <sb-contrib.version>7.6.4</sb-contrib.version>
-        <spring-boot.version>3.3.0</spring-boot.version>
-        <spring-framework.version>6.1.8</spring-framework.version>
+        <spring-boot.version>3.3.1</spring-boot.version>
+        <spring-framework.version>6.1.10</spring-framework.version>
     </properties>
 
     <dependencyManagement>
@@ -110,7 +110,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.32</version>
+            <version>1.18.34</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -142,12 +142,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>3.2.5</version>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <version>3.6.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -167,7 +167,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>3.0.1</version>
+                    <version>3.1.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -217,12 +217,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.7.0</version>
+                    <version>3.7.1</version>
                 </plugin>
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>4.8.5.0</version>
+                    <version>4.8.6.2</version>
                     <configuration>
                         <excludeFilterFile>excludeFindbugs.xml</excludeFilterFile>
                         <includeTests>true</includeTests>
@@ -243,14 +243,14 @@
                         <dependency>
                             <groupId>com.github.spotbugs</groupId>
                             <artifactId>spotbugs</artifactId>
-                            <version>4.8.5</version>
+                            <version>4.8.6</version>
                         </dependency>
                     </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>9.2.0</version>
+                    <version>10.0.2</version>
                     <configuration>
                         <dataDirectory>${user.dir}/../dependency-check-data</dataDirectory>
                         <nvdApiKey>${env.NVD_KEY}</nvdApiKey>
@@ -268,7 +268,7 @@
              <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>2.16.2</version>
+                <version>2.17.0</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -278,7 +278,7 @@
             <plugin>
                 <groupId>io.github.git-commit-id</groupId>
                 <artifactId>git-commit-id-maven-plugin</artifactId>
-                <version>9.0.0</version>
+                <version>9.0.1</version>
                 <executions>
                     <execution>
                         <goals><goal>revision</goal></goals>
@@ -293,7 +293,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>3.3.2</version>
+                <version>3.4.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -340,7 +340,7 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>3.9.7</version>
+                                    <version>3.9.8</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
                                     <version>${java.version}</version>
@@ -373,7 +373,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.4.1</version>
+                <version>3.4.2</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -462,7 +462,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
+                <version>3.3.0</version>
                 <configuration>
                     <argLine>${argLine} -Dfile.encoding=${project.build.sourceEncoding}</argLine>
                 </configuration>
