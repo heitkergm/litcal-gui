@@ -52,13 +52,13 @@
         <java.version>23</java.version>
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <findsecbugs-plugin.version>1.13.0</findsecbugs-plugin.version>
-        <fluido-skin.version>2.0.0-M11</fluido-skin.version>
+        <fluido-skin.version>2.0.0</fluido-skin.version>
         <log4j2.version>2.24.1</log4j2.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
-        <pmd.version>7.6.0</pmd.version>
-        <sb-contrib.version>7.6.5</sb-contrib.version>
-        <spring-boot.version>3.3.5</spring-boot.version>
-        <spring-framework.version>6.1.14</spring-framework.version>
+        <pmd.version>7.7.0</pmd.version>
+        <sb-contrib.version>7.6.8</sb-contrib.version>
+        <spring-boot.version>3.3.6</spring-boot.version>
+        <spring-framework.version>6.1.15</spring-framework.version>
     </properties>
 
     <dependencyManagement>
@@ -66,7 +66,7 @@
             <dependency>
                 <groupId>io.micrometer</groupId>
                 <artifactId>micrometer-observation</artifactId>
-                <version>1.13.6</version>
+                <version>1.14.1</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.maven.skins</groupId>
@@ -115,7 +115,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.34</version>
+            <version>1.18.36</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -142,12 +142,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jxr-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <version>3.6.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>3.5.1</version>
+                    <version>3.5.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -157,7 +157,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.10.1</version>
+                    <version>3.11.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -182,7 +182,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-pmd-plugin</artifactId>
-                    <version>3.25.0</version>
+                    <version>3.26.0</version>
                     <dependencies>
                         <dependency>
                             <groupId>net.sourceforge.pmd</groupId>
@@ -199,12 +199,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <version>3.6.0</version>
                     <dependencies>
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>10.18.2</version>
+                            <version>10.20.1</version>
                         </dependency>
                     </dependencies>
                     <configuration>
@@ -222,12 +222,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.8.0</version>
+                    <version>3.8.1</version>
                 </plugin>
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>4.8.6.5</version>
+                    <version>4.8.6.6</version>
                     <configuration>
                         <excludeFilterFile>excludeFindbugs.xml</excludeFilterFile>
                         <includeTests>true</includeTests>
@@ -255,7 +255,7 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>11.0.0</version>
+                    <version>11.1.0</version>
                     <configuration>
                         <dataDirectory>${user.dir}/../dependency-check-data</dataDirectory>
                         <nvdApiKey>${env.NVD_KEY}</nvdApiKey>
@@ -273,7 +273,7 @@
              <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>2.17.1</version>
+                <version>2.18.0</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -467,7 +467,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.5.2</version>
                 <configuration>
                     <argLine>${argLine} -Dfile.encoding=${project.build.sourceEncoding}</argLine>
                 </configuration>
@@ -488,7 +488,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>4.0.0-M16</version>
+                <version>3.21.0</version>
             </plugin>
         </plugins>
     </build>
