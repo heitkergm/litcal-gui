@@ -12,6 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * Litcal Swing App.
+ *
+ * @author heitkergm@acm.org
+ *
  */
 @Component
 @Slf4j

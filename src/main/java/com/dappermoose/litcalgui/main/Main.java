@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * This is the actual main class.
  *
+ * @author heitkergm@acm.org
  */
 @Slf4j
 public final class Main
