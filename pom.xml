@@ -53,12 +53,12 @@
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <findsecbugs-plugin.version>1.13.0</findsecbugs-plugin.version>
         <fluido-skin.version>2.0.0</fluido-skin.version>
-        <log4j2.version>2.24.1</log4j2.version>
+        <log4j2.version>2.24.2</log4j2.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
-        <pmd.version>7.7.0</pmd.version>
+        <pmd.version>7.8.0</pmd.version>
         <sb-contrib.version>7.6.8</sb-contrib.version>
-        <spring-boot.version>3.3.6</spring-boot.version>
-        <spring-framework.version>6.1.15</spring-framework.version>
+        <spring-boot.version>3.4.0</spring-boot.version>
+        <spring-framework.version>6.2.0</spring-framework.version>
     </properties>
 
     <dependencyManagement>
@@ -157,7 +157,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.11.1</version>
+                    <version>3.11.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -204,17 +204,16 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>10.20.1</version>
+                            <version>10.20.2</version>
                         </dependency>
                     </dependencies>
                     <configuration>
                         <configLocation>checkstyle.xml</configLocation>
                         <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>
-                        <encoding>UTF-8</encoding>
                         <consoleOutput>true</consoleOutput>
                         <failsOnError>false</failsOnError>
                         <linkXRef>true</linkXRef>
-                        <includeTestSourceDirectory>false</includeTestSourceDirectory>
+                        <includeTestSourceDirectory>true</includeTestSourceDirectory>
                         <includeResources>false</includeResources>
                         <includeTestResources>false</includeTestResources>
                     </configuration>
@@ -255,7 +254,7 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>11.1.0</version>
+                    <version>11.1.1</version>
                     <configuration>
                         <dataDirectory>${user.dir}/../dependency-check-data</dataDirectory>
                         <nvdApiKey>${env.NVD_KEY}</nvdApiKey>

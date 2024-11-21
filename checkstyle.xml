@@ -12,7 +12,9 @@ and open the template in the editor.
 
 <module name="Checker">
     <property name="charset" value="UTF-8"/>
-    <module name="JavadocPackage"/>
+    <module name="JavadocPackage">
+        <property name="allowLegacy" value="true"/>
+    </module>
 
     <module name="TreeWalker">
         <!-- whitespace -->
@@ -90,6 +92,7 @@ and open the template in the editor.
         <!-- javadoc -->
         <module name="JavadocType">
             <property name="scope" value="public"/>
+            <property name="authorFormat" value="\S"/>
         </module>
         <module name="JavadocMethod">
             <property name="accessModifiers" value="public"/>

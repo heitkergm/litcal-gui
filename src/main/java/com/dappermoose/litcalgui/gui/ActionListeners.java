@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
  * home of the action listeners.
  * for the menubar and frame.
  *
- * @author matt
+ * @author heitkergm@acm.org
  */
 @Component
 @Slf4j

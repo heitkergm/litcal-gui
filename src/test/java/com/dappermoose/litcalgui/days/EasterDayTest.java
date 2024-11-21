@@ -52,7 +52,7 @@ public class EasterDayTest
     {
     }
 
-   /**
+    /**
      * Test of calcEaster method, with 2011.
      */
     @Test
@@ -62,7 +62,7 @@ public class EasterDayTest
         Assertions.assertEquals (55, EasterDay.calcEaster (2011));
     }
 
-   /**
+    /**
      * Test of calcEaster method, with 2012.
      */
     @Test
@@ -71,7 +71,8 @@ public class EasterDayTest
         System.out.println ("calcDateEaster - 2012");
         Assertions.assertEquals (39, EasterDay.calcEaster (2012));
     }
-   /**
+
+    /**
      * Test of calcEaster method, with 2013.
      */
     @Test
@@ -81,7 +82,7 @@ public class EasterDayTest
         Assertions.assertEquals (31, EasterDay.calcEaster (2013));
     }
 
-   /**
+    /**
      * Test of calcEaster method, with 2014.
      */
     @Test
@@ -110,15 +111,16 @@ public class EasterDayTest
         System.out.println ("calcDateEaster - 2016");
         Assertions.assertEquals (27, EasterDay.calcEaster (2016));
     }
+
     /**
      * Test of calcEaster method, with 2017.
      */
-   @Test
-   public void testCalcDateEaster2017 ()
-   {
-       System.out.println ("calcDateEaster - 2017");
-       Assertions.assertEquals (47, EasterDay.calcEaster (2017));
-   }
+    @Test
+    public void testCalcDateEaster2017 ()
+    {
+        System.out.println ("calcDateEaster - 2017");
+        Assertions.assertEquals (47, EasterDay.calcEaster (2017));
+    }
 
    /**
      * Test of calcEaster method, with 2018.
@@ -130,7 +132,7 @@ public class EasterDayTest
         Assertions.assertEquals (32, EasterDay.calcEaster (2018));
     }
 
-   /**
+    /**
      * Test of calcEaster method, with 2019.
      */
     @Test
@@ -140,7 +142,7 @@ public class EasterDayTest
         Assertions.assertEquals (52, EasterDay.calcEaster (2019));
     }
 
-   /**
+    /**
      * Test of calcEaster method, with 2020.
      */
     @Test
