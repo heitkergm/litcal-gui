@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * initial frame setup.
  *
- * @author matt
+ * @author heitkergm@acm.org
  */
 @Slf4j
 @Component

@@ -20,6 +20,8 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * The Class SpringConfig.
+ *
+ * @author heitkergm@acm.org
  */
 @ComponentScan ("com.dappermoose.litcalgui")
 @Configuration
