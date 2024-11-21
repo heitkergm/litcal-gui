@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * the guts of the calendar-making process.
  *
- * @author matt
+ * @author heitkergm@acm.org
  */
 @Component
 @Slf4j

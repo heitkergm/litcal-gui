@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * create the result window.
  * A text pane wrapped by a scroll pane.
  * 
- * @author matt
+ * @author heitkergm@acm.org
  */
 @Component
 public final class SetupScrollPane

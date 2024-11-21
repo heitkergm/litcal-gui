@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
  * "Borrowed" shamelessly from
  * http://www.camick.com/java/source/RequestFocusListener.java
  *
- * @author matt
+ * @author heitkergm@acm.org
  */
 @Slf4j
 class RequestFocusListener implements AncestorListener

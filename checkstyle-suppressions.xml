@@ -4,5 +4,5 @@
      "http://checkstyle.sourceforge.net/dtds/suppressions_1_0.dtd">
 
 <suppressions>
-    <suppress checks="UncommentedMain" files="Main.java" lines="30" />
+    <suppress checks="UncommentedMain" files="Main.java" lines="31" />
 </suppressions>

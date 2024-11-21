@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * make the menu bar.
  * Create the menu bar and setup its listeners.
- * @author matt
+ * @author heitkergm@acm.org
  */
 @Component
 @Slf4j

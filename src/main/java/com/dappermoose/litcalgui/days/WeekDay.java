@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  * <p>This is often known as Zeller's Congruence.</p>
  *
- * @author matt
+ * @author heitkergm@acm.org
  */
 @Slf4j
 public final class WeekDay

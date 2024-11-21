@@ -52,13 +52,12 @@
         <java.version>23</java.version>
         <exec.mainClass>com.dappermoose.litcalgui.main.Main</exec.mainClass>
         <findsecbugs-plugin.version>1.13.0</findsecbugs-plugin.version>
-        <fluido-skin.version>2.0.0</fluido-skin.version>
-        <log4j2.version>2.24.1</log4j2.version>
+        <fluido-skin.version>2.0.1</fluido-skin.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
-        <pmd.version>7.7.0</pmd.version>
-        <sb-contrib.version>7.6.8</sb-contrib.version>
-        <spring-boot.version>3.3.6</spring-boot.version>
-        <spring-framework.version>6.1.15</spring-framework.version>
+        <pmd.version>7.9.0</pmd.version>
+        <sb-contrib.version>7.6.9</sb-contrib.version>
+        <spring-boot.version>3.4.2</spring-boot.version>
+        <spring-framework.version>6.2.2</spring-framework.version>
     </properties>
 
     <dependencyManagement>
@@ -66,7 +65,7 @@
             <dependency>
                 <groupId>io.micrometer</groupId>
                 <artifactId>micrometer-observation</artifactId>
-                <version>1.14.1</version>
+                <version>1.14.3</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.maven.skins</groupId>
@@ -103,14 +102,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j2-impl</artifactId>
-            <version>${log4j2.version}</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.16</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -131,7 +125,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.11.3</version>
+            <version>5.11.4</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -157,7 +151,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.11.1</version>
+                    <version>3.11.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -204,17 +198,16 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>10.20.1</version>
+                            <version>10.21.1</version>
                         </dependency>
                     </dependencies>
                     <configuration>
                         <configLocation>checkstyle.xml</configLocation>
                         <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>
-                        <encoding>UTF-8</encoding>
                         <consoleOutput>true</consoleOutput>
                         <failsOnError>false</failsOnError>
                         <linkXRef>true</linkXRef>
-                        <includeTestSourceDirectory>false</includeTestSourceDirectory>
+                        <includeTestSourceDirectory>true</includeTestSourceDirectory>
                         <includeResources>false</includeResources>
                         <includeTestResources>false</includeTestResources>
                     </configuration>
@@ -248,14 +241,14 @@
                         <dependency>
                             <groupId>com.github.spotbugs</groupId>
                             <artifactId>spotbugs</artifactId>
-                            <version>4.8.6</version>
+                            <version>4.9.0</version>
                         </dependency>
                     </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>11.1.0</version>
+                    <version>12.0.1</version>
                     <configuration>
                         <dataDirectory>${user.dir}/../dependency-check-data</dataDirectory>
                         <nvdApiKey>${env.NVD_KEY}</nvdApiKey>
@@ -428,9 +421,6 @@
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer" />
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheNoticeResourceTransformer" />
 
-                                <!-- transformer merges Log4j2 plugin cache files -->
-                                <transformer implementation="com.github.edwgiz.maven_shade_plugin.log4j2_cache_transformer.PluginsCacheFileTransformer" />
-
                                 <!-- the rest are from spring-boot-starter-parent -->
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
@@ -447,11 +437,6 @@
                     </execution>
                 </executions>
                 <dependencies>
-                    <dependency>
-                        <groupId>com.github.edwgiz</groupId>
-                        <artifactId>maven-shade-plugin.log4j2-cachefile-transformer</artifactId>
-                        <version>2.15</version>
-                    </dependency>
                     <dependency>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
