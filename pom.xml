@@ -54,10 +54,10 @@
         <findsecbugs-plugin.version>1.14.0</findsecbugs-plugin.version>
         <fluido-skin.version>2.1.0</fluido-skin.version>
         <maven.version.rules>file://${project.basedir}/versions-rule-set.xml</maven.version.rules>
-        <pmd.version>7.14.0</pmd.version>
-        <sb-contrib.version>7.6.11</sb-contrib.version>
-        <spring-boot.version>3.5.3</spring-boot.version>
-        <spring-framework.version>6.2.8</spring-framework.version>
+        <pmd.version>7.16.0</pmd.version>
+        <sb-contrib.version>7.6.13</sb-contrib.version>
+        <spring-boot.version>3.5.5</spring-boot.version>
+        <spring-framework.version>6.2.10</spring-framework.version>
     </properties>
 
     <dependencyManagement>
@@ -65,7 +65,7 @@
             <dependency>
                 <groupId>io.micrometer</groupId>
                 <artifactId>micrometer-observation</artifactId>
-                <version>1.15.1</version>
+                <version>1.15.2</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.maven.skins</groupId>
@@ -125,7 +125,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.13.1</version>
+            <version>5.13.4</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -146,7 +146,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.11.2</version>
+                    <version>3.11.3</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -171,7 +171,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-pmd-plugin</artifactId>
-                    <version>3.26.0</version>
+                    <version>3.27.0</version>
                     <dependencies>
                         <dependency>
                             <groupId>net.sourceforge.pmd</groupId>
@@ -193,7 +193,7 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>10.25.1</version>
+                            <version>11.0.0</version>
                         </dependency>
                     </dependencies>
                     <configuration>
@@ -215,7 +215,7 @@
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>4.9.3.0</version>
+                    <version>4.9.4.0</version>
                     <configuration>
                         <excludeFilterFile>excludeFindbugs.xml</excludeFilterFile>
                         <includeTests>true</includeTests>
@@ -236,7 +236,7 @@
                         <dependency>
                             <groupId>com.github.spotbugs</groupId>
                             <artifactId>spotbugs</artifactId>
-                            <version>4.9.3</version>
+                            <version>4.9.4</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -322,7 +322,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.5.0</version>
+                <version>3.6.1</version>
                 <executions>
                     <execution>
                         <?m2e ignore?>
@@ -333,7 +333,7 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>3.9.10</version>
+                                    <version>3.9.11</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
                                     <version>${java.version}</version>
