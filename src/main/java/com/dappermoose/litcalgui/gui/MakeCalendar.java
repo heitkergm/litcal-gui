@@ -11,8 +11,9 @@ import javax.swing.JSpinner.NumberEditor;
 import javax.swing.SpinnerNumberModel;
 
 import org.springframework.context.MessageSource;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
+
+import org.jspecify.annotations.NonNull;
 
 import com.dappermoose.litcalgui.days.EasterDay;
 import com.dappermoose.litcalgui.days.LeapYear;

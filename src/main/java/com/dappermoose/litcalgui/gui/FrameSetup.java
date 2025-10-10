@@ -17,10 +17,12 @@ import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
+import javax.swing.border.LineBorder;
 
 import org.springframework.context.MessageSource;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
+
+import org.jspecify.annotations.NonNull;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -77,6 +79,7 @@ public final class FrameSetup
         UIManager.put ("OptionPane.background", Color.BLACK);
         UIManager.put ("OptionPane.foreground", Color.WHITE);
         UIManager.put ("OptionPane.messageForeground", Color.WHITE);
+        UIManager.put ("OptionPane.border", new LineBorder (Color.WHITE));
         UIManager.put ("Button.background", Color.BLACK);
         UIManager.put ("Button.foreground", Color.WHITE);
         UIManager.put ("Panel.background", Color.BLACK);
